@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, Batedor {
 		}
 
 		instance = this;
-		inventory = ScriptableObject.CreateInstance("Inventory") as Inventory;
+		inventory = new Inventory ();//ScriptableObject.CreateInstance("Inventory") as Inventory;
 		GameObject.DontDestroyOnLoad( this.gameObject );
 	}
 
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, Batedor {
 	}
 
 	public bool attack (Killable enemy){
-		enemy.TakesDamage (1);
+		enemy.TakeDamage (1);
 		if (enemy.GetHealth() <= 0)
 			GameManager.GetInstance ().GetEnemies ().Remove (enemy);
 		return true;

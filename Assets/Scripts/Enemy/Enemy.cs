@@ -1,17 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 
-public class Enemy : ScriptableObject, Killable {
+public class Enemy : Killable {
 
-	int health = 2;
-	int damage = 0;
+	private int health;
+	private int attack;
+	private int defense;
 
-	public void TakesDamage(int damage){
-		health -= damage;
+	public Enemy(int health, int attack, int defense) {
+		this.health = health;
+		this.attack = attack;
+		this.defense = defense;
 	}
 
+	public int TakeDamage(int damage){
+		health -= damage - defense;
+		return attack;
+	}
 
-	public int GetHealth(){
+	public int GetHealth() {
 		return health;
 	}
 

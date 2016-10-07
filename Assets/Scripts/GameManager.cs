@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	public void MakeEnemies(){
 		enemies = new List<Killable> ();
 		for (int i=0; i<10; i++)
-			enemies.Add (ScriptableObject.CreateInstance ("Enemy") as Enemy);
+			enemies.Add(new Rat());
 	}
 
 	public List<Killable> GetEnemies(){

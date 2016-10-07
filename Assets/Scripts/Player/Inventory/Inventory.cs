@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿//using UnityEngine;
+//using System.Collections;
+using System;
 
-public class Inventory : ScriptableObject {
+public class Inventory/* : ScriptableObject */{
 
 	private Weapon weapon;
 

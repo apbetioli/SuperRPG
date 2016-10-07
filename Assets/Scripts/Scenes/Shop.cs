@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour {
 		if (Player.GetInstance ().GetInventory ().Weapon == null) {
 			GUI.Label (new Rect (0, 50, 150, 20), "O que você quer comprar?");
 			if (GUI.Button (new Rect (0, 70, 200, 50), "Espada de madeira")) {
-				Weapon s = ScriptableObject.CreateInstance("WoodSword") as WoodSword;
+				Weapon s = new WoodenSword();
 				s.Equip (Player.GetInstance ());
 			}
 		}else

@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Weapon : Equipable {
+public abstract class Weapon : Equipable {
 
-	int Damage();
+	public abstract int Damage();
 
-	string Texto ();
+	public abstract string Texto ();
+
+	public void Equip (Player player){
+		player.GetInventory().Weapon = this;
+	}
 }

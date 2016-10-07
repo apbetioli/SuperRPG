@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Killable{
+public interface Killable {
 
-	void TakesDamage (int damage);
+	int TakeDamage (int damage);
 
 	int GetHealth ();
 }
