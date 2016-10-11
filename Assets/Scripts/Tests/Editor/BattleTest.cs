@@ -36,6 +36,12 @@ public class BattleTest {
 
 		Assert.AreEqual (5, rat.GetHealth ());
 		Assert.AreEqual (95, player.GetHealth ());
+
+		player.attack (rat);
+
+		Assert.AreEqual (0, rat.GetHealth ());
+		//TODO Bug: um rato morto pode atacar ? hehehehe
+		Assert.AreEqual (98, player.GetHealth ());
 	}
 
 	[Test]
@@ -54,4 +60,6 @@ public class BattleTest {
 		Assert.AreEqual (5, rat.GetHealth ());
 		Assert.AreEqual (98, player.GetHealth ());
 	}
+
+
 }
