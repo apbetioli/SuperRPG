@@ -40,8 +40,7 @@ public class BattleTest {
 		player.attack (rat);
 
 		Assert.AreEqual (0, rat.GetHealth ());
-		//TODO Bug: um rato morto pode atacar ? hehehehe
-		Assert.AreEqual (98, player.GetHealth ());
+		Assert.AreEqual (95, player.GetHealth ());
 	}
 
 	[Test]

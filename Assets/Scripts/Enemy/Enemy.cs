@@ -14,7 +14,11 @@ public class Enemy : Killable {
 
 	public int TakeDamage(int damage){
 		health -= damage - defense;
-		return attack;
+
+		if (health <= 0)
+			return 0;
+
+		return attack;		
 	}
 
 	public int GetHealth() {
