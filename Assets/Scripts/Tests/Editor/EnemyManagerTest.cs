@@ -19,9 +19,7 @@ public class EnemyManagerTest{
 		Assert.IsNotNull (manager.GetEnemies());
 		Assert.AreEqual (0, manager.GetEnemies().Count);
 		Assert.IsNull (manager.GetNextEnemy());
-
 	}
-
 }
 
 

@@ -16,6 +16,5 @@ public class Character {
 	public int GetHealth() {
 		return health;
 	}
-
 }
 

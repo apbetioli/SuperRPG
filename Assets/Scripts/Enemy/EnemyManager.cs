@@ -23,8 +23,10 @@ public class EnemyManager {
 		if (!enemies.GetEnumerator ().MoveNext ())
 			return null;
 			
-		if (enemies[0].GetHealth () <= 0)
-			KillEnemy (enemies[0]);
+		if (enemies [0].GetHealth () <= 0) {
+			KillEnemy (enemies [0]);
+			return null;
+		}
 		
 		return enemies[0];
 	}
