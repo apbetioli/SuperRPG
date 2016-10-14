@@ -25,4 +25,8 @@ public class Enemy : Killable {
 		return health;
 	}
 
+	public bool IsDead() {
+		return health == 0;
+	}
+
 }

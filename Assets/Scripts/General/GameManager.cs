@@ -4,30 +4,30 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+	private static GameManager instance;
+	private static Player player;
 
-	static GameManager instance;
-	static Character character;
+	void Awake ()
+	{
+		instance = this;
+	}
 
 	void Start ()
 	{
-		if (instance != null) {			
-			Destroy (this.gameObject);
-			return;
-		}
-
-		instance = this;
-		character = new Character ();
-
+		player = new Player ();
 		GameObject.DontDestroyOnLoad (this.gameObject);
 	}
 
 	public static GameManager GetInstance ()
 	{
+		if (instance == null)
+			instance = GameObject.FindObjectOfType<GameManager> ();
 		return instance;
 	}
 
-	public Character GetPlayer ()
-	{
-		return character;
+	public Player Player {
+		get {
+			return player;
+		}
 	}
 }

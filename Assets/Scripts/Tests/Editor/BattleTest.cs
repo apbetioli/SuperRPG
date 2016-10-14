@@ -13,7 +13,7 @@ public class BattleTest {
 		Enemy rat = new Rat ();
 		Assert.AreEqual (10, rat.GetHealth());
 
-		Character player = new Character ();
+		Player player = new Player ();
 		Assert.AreEqual (100, player.GetHealth ());
 
 		player.attack (rat);
@@ -28,7 +28,7 @@ public class BattleTest {
 		Enemy rat = new Rat ();
 		Assert.AreEqual (10, rat.GetHealth());
 
-		Character player = new Character ();
+		Player player = new Player ();
 		Assert.AreEqual (100, player.GetHealth ());
 
 		player.weapon = new WoodenSword ();
@@ -49,7 +49,7 @@ public class BattleTest {
 		Enemy rat = new Rat ();
 		Assert.AreEqual (10, rat.GetHealth());
 
-		Character player = new Character ();
+		Player player = new Player ();
 		Assert.AreEqual (100, player.GetHealth ());
 
 		player.weapon = new WoodenSword ();
