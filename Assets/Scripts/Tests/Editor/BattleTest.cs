@@ -23,6 +23,24 @@ public class BattleTest {
 	}
 
 	[Test]
+	public void AttackOctopusKingWithFist() {
+
+		Enemy octopusKing = new OctopusKing ();
+		Assert.AreEqual (380, octopusKing.GetHealth());
+
+		Player player = new Player ();
+		Assert.AreEqual (100, player.GetHealth ());
+
+		for(int i=0; i<7; i++)
+			player.attack (octopusKing);
+
+		Assert.AreEqual (373, octopusKing.GetHealth ());
+		Assert.AreEqual (-12, player.GetHealth ());
+		Assert.True (player.IsDead ());
+
+	}
+
+	[Test]
 	public void AttackRatWithWoodenSword() {
 
 		Enemy rat = new Rat ();
@@ -31,7 +49,7 @@ public class BattleTest {
 		Player player = new Player ();
 		Assert.AreEqual (100, player.GetHealth ());
 
-		player.weapon = new WoodenSword ();
+		player.Weapon = new WoodenSword ();
 		player.attack (rat);
 
 		Assert.AreEqual (5, rat.GetHealth ());
@@ -53,8 +71,8 @@ public class BattleTest {
 		Player player = new Player ();
 		Assert.AreEqual (100, player.GetHealth ());
 
-		player.weapon = new WoodenSword ();
-		player.shield = new WoodenShield ();
+		player.Weapon = new WoodenSword ();
+		player.Shield = new WoodenShield ();
 		player.attack (rat);
 
 		Assert.AreEqual (5, rat.GetHealth ());

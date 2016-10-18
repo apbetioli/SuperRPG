@@ -9,7 +9,7 @@ public class BasementManagerTest
 {
 
 	[Test]
-	public void StartQuest ()
+	public void SucessQuest ()
 	{
 		BasementQuestManager questManager = new BasementQuestManager ();
 		Assert.True (questManager.IsThereEnemiesAlive ());
@@ -26,11 +26,67 @@ public class BasementManagerTest
 		Assert.AreEqual (10, questManager.GetNumberOfEnemiesAlive());
 		Assert.AreEqual (5, questManager.GetCurrentEnemyHealth());
 
+		for(int i=0; i<19; i++)
+			questManager.Battle (player);
+
+		Assert.False (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (0, questManager.GetNumberOfEnemiesAlive());	
+		Assert.AreEqual (50, player.GetHealth());
+
+		questManager.Battle (player);
+
+		Assert.False (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (0, questManager.GetNumberOfEnemiesAlive());	
+		Assert.AreEqual (50, player.GetHealth());
+	}
+
+	[Test]
+	public void FailQuest ()
+	{
+		BasementQuestManager questManager = new BasementQuestManager ();
+		Assert.True (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (10, questManager.GetNumberOfEnemiesAlive());
+		Assert.AreEqual (10, questManager.GetCurrentEnemyHealth());
+
+		Player player = new Player ();
+		Assert.AreEqual (100, player.GetHealth());
+
 		questManager.Battle (player);
 
 		Assert.True (questManager.IsThereEnemiesAlive ());
-		Assert.AreEqual (9, questManager.GetNumberOfEnemiesAlive());
+		Assert.AreEqual (10, questManager.GetNumberOfEnemiesAlive());
+		Assert.AreEqual (9, questManager.GetCurrentEnemyHealth());
+
+		for(int i=0; i<21; i++)
+			questManager.Battle (player);
+
+		Assert.True (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (8, questManager.GetNumberOfEnemiesAlive());	
+		Assert.AreEqual  (0, player.GetHealth());
+		Assert.True (player.IsDead ());
+	}
+
+	[Test]
+	[ExpectedException( typeof( Exception ), ExpectedMessage="You should not try to attack when you're dead." )]
+	public void PlayerKilledTryingToAttack ()
+	{
+		BasementQuestManager questManager = new BasementQuestManager ();
+		Assert.True (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (10, questManager.GetNumberOfEnemiesAlive());
 		Assert.AreEqual (10, questManager.GetCurrentEnemyHealth());
-		Assert.AreEqual (95, player.GetHealth());
+
+		Player player = new Player ();
+		Assert.AreEqual (100, player.GetHealth());
+
+
+		for(int i=0; i<22; i++)
+			questManager.Battle (player);
+
+		Assert.True (questManager.IsThereEnemiesAlive ());
+		Assert.AreEqual (8, questManager.GetNumberOfEnemiesAlive());	
+		Assert.AreEqual  (0, player.GetHealth());
+		Assert.True (player.IsDead ());
+
+		questManager.Battle (player);
 	}
 }
