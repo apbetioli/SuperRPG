@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+
 
 public class BasementQuest : MonoBehaviour
 {
@@ -32,7 +34,10 @@ public class BasementQuest : MonoBehaviour
 			return;
 		}
 
-		GUI.Label (new Rect (300, 0, 500, 20), "Sua vida: " + player.GetHealth ());
+		if(!player.IsDead())
+			GUI.Label (new Rect (300, 0, 500, 20), "Sua vida: " + player.GetHealth ());
+		else
+			GUI.Label (new Rect (300, 0, 500, 20), "Que pena, você está morto");
 
 		Battle ();
 
@@ -62,6 +67,10 @@ public class BasementQuest : MonoBehaviour
 
 		wait = 0;
 
-		questManager.Battle (player);
+		try{
+			questManager.Battle (player);
+		}catch(Exception ex){
+			//TODO será?
+		}
 	}
 }
