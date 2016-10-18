@@ -16,5 +16,15 @@ public class Player {
 	public int GetHealth() {
 		return health;
 	}
+
+	public Weapon Weapon{
+		get{
+			return weapon;
+		}
+
+		set{ 
+			weapon = value;
+		}
+	}
 }
 

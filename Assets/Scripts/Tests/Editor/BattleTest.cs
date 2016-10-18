@@ -40,6 +40,7 @@ public class BattleTest {
 		player.attack (rat);
 
 		Assert.AreEqual (0, rat.GetHealth ());
+		Assert.True ( rat.IsDead());
 		Assert.AreEqual (95, player.GetHealth ());
 	}
 
@@ -62,6 +63,7 @@ public class BattleTest {
 		player.attack (rat);
 
 		Assert.AreEqual (0, rat.GetHealth ());
+		Assert.True ( rat.IsDead());
 		Assert.AreEqual (98, player.GetHealth ());
 	}
 
