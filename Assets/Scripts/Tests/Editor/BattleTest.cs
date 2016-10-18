@@ -41,6 +41,26 @@ public class BattleTest {
 	}
 
 	[Test]
+	[ExpectedException( typeof( Exception ), ExpectedMessage="You should not try to attack when you're dead." )]
+	public void PlayerKilledTryingToAttack ()
+	{
+		Enemy octopusKing = new OctopusKing ();
+		Assert.AreEqual (380, octopusKing.GetHealth());
+
+		Player player = new Player ();
+		Assert.AreEqual (100, player.GetHealth ());
+
+		for(int i=0; i<7; i++)
+			player.attack (octopusKing);
+
+		Assert.AreEqual (373, octopusKing.GetHealth ());
+		Assert.AreEqual (-12, player.GetHealth ());
+		Assert.True (player.IsDead ());
+
+		player.attack (octopusKing);
+	}
+
+	[Test]
 	public void AttackRatWithWoodenSword() {
 
 		Enemy rat = new Rat ();
