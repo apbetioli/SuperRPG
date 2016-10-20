@@ -5,7 +5,7 @@ using NUnit.Framework;
 using UnityEngine;
 
 [TestFixture]
-public class BattleTest {
+public class PlayerTest {
 
 	[Test]
 	public void AttackRatWithFist() {
@@ -14,12 +14,12 @@ public class BattleTest {
 		Assert.AreEqual (10, rat.GetHealth());
 
 		Player player = new Player ();
-		Assert.AreEqual (100, player.GetHealth ());
+		Assert.AreEqual (100, player.Health);
 
-		player.attack (rat);
+		player.Attack (rat);
 
 		Assert.AreEqual (9, rat.GetHealth ());
-		Assert.AreEqual (95, player.GetHealth ());
+		Assert.AreEqual (95, player.Health );
 	}
 
 	[Test]
@@ -29,15 +29,14 @@ public class BattleTest {
 		Assert.AreEqual (380, octopusKing.GetHealth());
 
 		Player player = new Player ();
-		Assert.AreEqual (100, player.GetHealth ());
+		Assert.AreEqual (100, player.Health);
 
 		for(int i=0; i<7; i++)
-			player.attack (octopusKing);
+			player.Attack (octopusKing);
 
 		Assert.AreEqual (373, octopusKing.GetHealth ());
-		Assert.AreEqual (-12, player.GetHealth ());
+		Assert.AreEqual (0, player.Health);
 		Assert.True (player.IsDead ());
-
 	}
 
 	[Test]
@@ -48,16 +47,16 @@ public class BattleTest {
 		Assert.AreEqual (380, octopusKing.GetHealth());
 
 		Player player = new Player ();
-		Assert.AreEqual (100, player.GetHealth ());
+		Assert.AreEqual (100, player.Health);
 
 		for(int i=0; i<7; i++)
-			player.attack (octopusKing);
+			player.Attack (octopusKing);
 
 		Assert.AreEqual (373, octopusKing.GetHealth ());
-		Assert.AreEqual (-12, player.GetHealth ());
+		Assert.AreEqual (0, player.Health);
 		Assert.True (player.IsDead ());
 
-		player.attack (octopusKing);
+		player.Attack (octopusKing);
 	}
 
 	[Test]
@@ -67,19 +66,19 @@ public class BattleTest {
 		Assert.AreEqual (10, rat.GetHealth());
 
 		Player player = new Player ();
-		Assert.AreEqual (100, player.GetHealth ());
+		Assert.AreEqual (100, player.Health);
 
 		player.Weapon = new WoodenSword ();
-		player.attack (rat);
+		player.Attack (rat);
 
 		Assert.AreEqual (5, rat.GetHealth ());
-		Assert.AreEqual (95, player.GetHealth ());
+		Assert.AreEqual (95, player.Health);
 
-		player.attack (rat);
+		player.Attack (rat);
 
 		Assert.AreEqual (0, rat.GetHealth ());
 		Assert.True ( rat.IsDead());
-		Assert.AreEqual (95, player.GetHealth ());
+		Assert.AreEqual (95, player.Health);
 	}
 
 	[Test]
@@ -89,20 +88,20 @@ public class BattleTest {
 		Assert.AreEqual (10, rat.GetHealth());
 
 		Player player = new Player ();
-		Assert.AreEqual (100, player.GetHealth ());
+		Assert.AreEqual (100, player.Health);
 
 		player.Weapon = new WoodenSword ();
 		player.Shield = new WoodenShield ();
-		player.attack (rat);
+		player.Attack (rat);
 
 		Assert.AreEqual (5, rat.GetHealth ());
-		Assert.AreEqual (98, player.GetHealth ());
+		Assert.AreEqual (98, player.Health);
 
-		player.attack (rat);
+		player.Attack (rat);
 
 		Assert.AreEqual (0, rat.GetHealth ());
 		Assert.True ( rat.IsDead());
-		Assert.AreEqual (98, player.GetHealth ());
+		Assert.AreEqual (98, player.Health);
 	}
 
 

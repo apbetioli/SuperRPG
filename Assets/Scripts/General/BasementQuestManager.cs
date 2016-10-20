@@ -23,7 +23,7 @@ public class BasementQuestManager
 			return;
 
 		Enemy enemy = enemies [currentEnemy];
-		player.attack (enemy);
+		player.Attack (enemy);
 		if (enemy.IsDead ())
 			currentEnemy++;
 	}

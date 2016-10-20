@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class BasementQuest : MonoBehaviour
 {
-	public float secondsToAttack = 2;
+	public float secondsToAttack = 1f;
 
 	private BasementQuestManager questManager;
 	private float wait;
@@ -20,7 +20,7 @@ public class BasementQuest : MonoBehaviour
 
 	void Start ()
 	{
-		wait = 0;
+		InvokeRepeating ("Battle", 0f, secondsToAttack);
 	}
 
 	void OnGUI ()
@@ -35,12 +35,10 @@ public class BasementQuest : MonoBehaviour
 		}
 
 		if(!player.IsDead())
-			GUI.Label (new Rect (300, 0, 500, 20), "Sua vida: " + player.GetHealth ());
+			GUI.Label (new Rect (300, 0, 500, 20), "Sua vida: " + player.Health);
 		else
 			GUI.Label (new Rect (300, 0, 500, 20), "Que pena, você está morto");
-
-		Battle ();
-
+		
 		string ratos = "";
 		for (int i = 0; i < questManager.GetNumberOfEnemiesAlive (); i++) {
 			string add = "    rato";
@@ -60,12 +58,7 @@ public class BasementQuest : MonoBehaviour
 
 	public void Battle ()
 	{	
-		wait += Time.deltaTime;
-
-		if (wait < secondsToAttack)
-			return;
-
-		wait = 0;
+		Debug.Log ("Battle");
 
 		try{
 			questManager.Battle (player);
