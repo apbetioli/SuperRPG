@@ -15,7 +15,7 @@ public class BasementQuest : MonoBehaviour
 	void Awake ()
 	{		
 		questManager = new BasementQuestManager ();	
-		player = GameManager.GetInstance ().Player;
+		player = GameManager.Player;
 	}
 
 	void Start ()
@@ -34,7 +34,7 @@ public class BasementQuest : MonoBehaviour
 			return;
 		}
 
-		if(!player.IsDead())
+		if (!player.IsDead ())
 			GUI.Label (new Rect (300, 0, 500, 20), "Sua vida: " + player.Health);
 		else
 			GUI.Label (new Rect (300, 0, 500, 20), "Que pena, você está morto");
@@ -60,10 +60,10 @@ public class BasementQuest : MonoBehaviour
 	{	
 		Debug.Log ("Battle");
 
-		try{
+		try {
 			questManager.Battle (player);
-		}catch(Exception ex){
-			//TODO será?
+		} catch (Exception ex) {
+			Debug.LogError (ex);
 		}
 	}
 }

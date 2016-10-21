@@ -9,7 +9,7 @@ public class Healing : MonoBehaviour {
 	
 	public void Heal ()
 	{
-		GameManager.GetInstance().Player.Heal ();
+		GameManager.Player.Heal ();
 	}
 
 }

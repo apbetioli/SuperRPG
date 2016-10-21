@@ -10,13 +10,13 @@ public class Map : MonoBehaviour {
 		if(GUI.Button(new Rect (0,70,100,50),"Missão")) { SceneManager.LoadScene("Scenes/House");}
 
 
-		if(GameManager.GetInstance().Player.Weapon.GetType() == typeof(Fist))
+		if(GameManager.Player.Weapon.GetType() == typeof(Fist))
 			GUI.Label(new Rect (400,0,1000,30),"Você não possui armas, porém pode bater com suas próprias mãos, cuidado para não se machucar!");
-		else if (GameManager.GetInstance().Player.Weapon != null)
-			GUI.Label(new Rect (400,0,1000,30),"Você tem "+GameManager.GetInstance().Player.Weapon.Texto()+", agora pode matar monstros gigantes. ;)");		
+		else if (GameManager.Player.Weapon != null)
+			GUI.Label(new Rect (400,0,1000,30),"Você tem "+GameManager.Player.Weapon.Texto()+", agora pode matar monstros gigantes. ;)");		
 		else
 			GUI.Label(new Rect (400,0,500,30),"Você não possui nenhuma arma!");
 
-		GUI.Label(new Rect (400,35,500,30),"Sua vida atual: " + GameManager.GetInstance().Player.Health);
+		GUI.Label(new Rect (400,35,500,30),"Sua vida atual: " + GameManager.Player.Health);
 	}
 }
