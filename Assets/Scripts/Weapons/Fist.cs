@@ -2,7 +2,7 @@
 
 public class Fist : Weapon {
 
-	public override int Damage() {
+	public int Damage() {
 		return 1;
 	}
 
@@ -10,7 +10,7 @@ public class Fist : Weapon {
 		return "Fist";
 	}
 
-	public override string Texto() {
+	public string Texto() {
 		return "Your own fists";
 	}
 

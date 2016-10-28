@@ -6,6 +6,8 @@ public class GameManager
 {
 	private static Player player;
 
+	private static Shop shop;
+
 	public static Player Player {
 		get {
 			if(player == null)
@@ -14,4 +16,11 @@ public class GameManager
 		}
 	}
 
+	public static Shop Shop {
+		get {
+			if(shop == null)
+				shop = new Shop ();
+			return shop;
+		}
+	}
 }

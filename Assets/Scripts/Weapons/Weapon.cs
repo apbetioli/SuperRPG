@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Weapon : Item {
+public interface Weapon : Item {
 
-	public abstract int Damage();
+	int Damage();
 
-	public abstract string Texto();
+	string Texto();
 
-	public string Name(){
-		return "";
-	}
 
 }
