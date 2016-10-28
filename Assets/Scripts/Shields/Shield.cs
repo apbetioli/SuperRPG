@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface Shield {
+public interface Shield : Item {
 
 	int Defense();
 

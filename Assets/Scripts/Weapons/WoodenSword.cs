@@ -7,6 +7,10 @@ public class WoodenSword : Weapon {
 		return 5;
 	}
 
+	public string Name(){
+		return "Wooden Shield";
+	}
+
 	public override string Texto() {
 		return "uma Espada de madeira";
 	}
