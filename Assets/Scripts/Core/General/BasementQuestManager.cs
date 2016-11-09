@@ -3,23 +3,29 @@ using System.Collections.Generic;
 
 public class BasementQuestManager
 {
-	private const int numberOfRats = 10;
+	private int numberOfRats;
 
 	private List<Enemy> enemies;
 	private int currentEnemy = 0;
 
-	public BasementQuestManager () {
-		SpawnRats();
+	public BasementQuestManager () : this(10)	{}
+
+	public BasementQuestManager (int numberOfRats)
+	{
+		this.numberOfRats = numberOfRats;
+		SpawnRats ();
 	}
 
-	private void SpawnRats() {
+	private void SpawnRats ()
+	{
 		enemies = new List<Enemy> ();
 		for (int i = 0; i < numberOfRats; i++)
-			enemies.Add (new Rat());
+			enemies.Add (new Rat ());
 	}
 
-	public void Battle(Player player) {
-		if (!IsThereEnemiesAlive())
+	public void Battle (Player player)
+	{
+		if (!IsThereEnemiesAlive ())
 			return;
 
 		Enemy enemy = enemies [currentEnemy];
@@ -28,16 +34,25 @@ public class BasementQuestManager
 			currentEnemy++;
 	}
 
-	public bool IsThereEnemiesAlive() {
-		return GetNumberOfEnemiesAlive() > 0;
+	public bool IsThereEnemiesAlive ()
+	{
+		return GetNumberOfEnemiesAlive () > 0;
 	}
 
-	public int GetCurrentEnemyHealth() {
+	public int GetCurrentEnemyHealth ()
+	{
 		return enemies [currentEnemy].GetHealth ();
 	}
 
-	public int GetNumberOfEnemiesAlive() {
+	public int GetNumberOfEnemiesAlive ()
+	{
 		return enemies.Count - currentEnemy;
+	}
+
+	public List<Enemy> Enemies {
+		get { 
+			return enemies;
+		}
 	}
 }
 
