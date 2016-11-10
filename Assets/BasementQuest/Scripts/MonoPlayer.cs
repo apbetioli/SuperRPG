@@ -3,7 +3,8 @@ using System.Collections;
 
 public class MonoPlayer : MonoBehaviour {
 
-	private float velocity = 1f;
+	public float velocity = 1f;
+
 	private Vector3 target;
 	private Player player;
 	private bool colliding = false;
@@ -42,6 +43,10 @@ public class MonoPlayer : MonoBehaviour {
 			target = transform.position;
 			colliding = true;
 		}
+	}
+
+	public bool IsDead() {
+		return player.IsDead ();
 	}
 
 }

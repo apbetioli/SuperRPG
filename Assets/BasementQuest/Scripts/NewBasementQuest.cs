@@ -7,57 +7,41 @@ using System.Collections.Generic;
 public class NewBasementQuest : MonoBehaviour
 {
 	public float secondsToAttack = 1f;
-	public MonoRat monoRatPrefab;
-	public int numberOfRats = 4;
-	public MonoPlayer monoPlayer;
 
-	private BasementQuestManager questManager;
-	private float wait;
-	private Player player;
+	public MonoPlayer player;
+	public List<MonoRat> rats =  new List<MonoRat>();
 
-	private List<MonoRat> rats =  new List<MonoRat>();
-
-	void Awake ()
-	{		
-		questManager = new BasementQuestManager (numberOfRats);	
-		player = GameManager.Player;
-
-		int x = 0;
-		foreach (Enemy rat in questManager.Enemies) {
-			MonoRat monoRat = GameObject.Instantiate (monoRatPrefab);
-			monoRat.Rat = rat as Rat;
-			monoRat.transform.position = new Vector3 (x, 0, 0);
-			rats.Add (monoRat);
-			x += 2;
-		}	
-
-	}
+	private int remaining;
 
 	void Start ()
 	{
+		Time.timeScale = 1;
+		GameManager.Player.Weapon = new WoodenSword ();
+		remaining = rats.Count;
 		InvokeRepeating ("Battle", 0f, secondsToAttack);
-
 	}
 
 	public void Battle ()
 	{	
-		monoPlayer.Attack(NextRat());
-
-		/*
-		try {
-			questManager.Battle (player);
-		} catch (Exception ex) {
-			Debug.LogError (ex);
+		if (remaining == 0) {
+			Debug.Log ("Yooo");
+			Time.timeScale = 0;
+			return;
 		}
-		*/
-	}
+		if (player.IsDead ()) {
+			Debug.Log ("Noooo");
+			Time.timeScale = 0;
+			return;
+		}
 
-	public MonoRat NextRat() {
 		foreach (MonoRat rat in rats) {
-			if(!rat.Rat.IsDead()) {
-				return rat;
+			if (!rat.IsDead ()) {
+				player.Attack (rat);
+				if (rat.IsDead ())
+					remaining--;
+				break;
 			}
 		}
-		return null;
 	}
+
 }

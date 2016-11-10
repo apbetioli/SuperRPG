@@ -12,7 +12,8 @@ public class Player
 	public void Attack (Enemy enemy)
 	{
 		if (IsDead ())
-			throw new Exception ("You should not try to attack when you're dead.");
+			return;
+			//throw new Exception ("You should not try to attack when you're dead.");
 
 		int damage = enemy.TakeDamage (weapon.Damage ());
 		TakeDamage (damage);
