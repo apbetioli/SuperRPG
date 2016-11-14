@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : Killable {
 
+
 	private int health;
 	private int attack;
 	private int defense;
@@ -14,6 +15,7 @@ public class Enemy : Killable {
 	}
 
 	public int TakeDamage(int damage){
+
 		health -= damage - defense;
 
 		if (health <= 0)

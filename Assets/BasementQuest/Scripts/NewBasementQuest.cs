@@ -35,7 +35,7 @@ public class NewBasementQuest : MonoBehaviour
 		}
 
 		foreach (MonoRat rat in rats) {
-			if (!rat.IsDead ()) {
+			if (!rat.IsDead ()) {				
 				player.Attack (rat);
 				if (rat.IsDead ())
 					remaining--;

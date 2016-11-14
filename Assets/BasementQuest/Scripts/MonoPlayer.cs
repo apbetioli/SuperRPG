@@ -24,9 +24,11 @@ public class MonoPlayer : MonoBehaviour {
 
 	public void Attack(MonoRat rat) {
 		if (colliding) {
+			rat.EnableHealthBar ();
 			Debug.Log ("Attacking " + rat.name);
 			player.Attack (rat.Rat);
 			Debug.Log ("Player " + player.Health + " - Rat " + rat.Rat.GetHealth());
+			rat.RefreshHealthBar ();
 			if (rat.Rat.IsDead ()) {
 				DestroyImmediate (rat.gameObject);
 				colliding = false;
