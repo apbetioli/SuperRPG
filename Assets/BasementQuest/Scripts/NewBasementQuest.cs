@@ -16,7 +16,7 @@ public class NewBasementQuest : MonoBehaviour
 	void Start ()
 	{
 		Time.timeScale = 1;
-		GameManager.Player.Weapon = new WoodenSword ();
+		//GameManager.Player.Weapon = new WoodenSword ();
 		remaining = rats.Count;
 		InvokeRepeating ("Battle", 0f, secondsToAttack);
 	}
