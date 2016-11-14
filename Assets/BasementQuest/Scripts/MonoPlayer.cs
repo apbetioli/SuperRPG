@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+
 
 public class MonoPlayer : MonoBehaviour {
 
 	public float velocity = 1f;
+	public Slider playerHealthBar;
 
 	private Vector3 target;
 	private Player player;
@@ -11,6 +14,8 @@ public class MonoPlayer : MonoBehaviour {
 
 	void Start() {
 		player = GameManager.Player;
+		playerHealthBar.maxValue = player.Health;
+		playerHealthBar.value = player.Health;
 		target = transform.position;
 	}
 
@@ -28,6 +33,7 @@ public class MonoPlayer : MonoBehaviour {
 			Debug.Log ("Attacking " + rat.name);
 			player.Attack (rat.Rat);
 			Debug.Log ("Player " + player.Health + " - Rat " + rat.Rat.GetHealth());
+			RefreshHealthBar ();
 			rat.RefreshHealthBar ();
 			if (rat.Rat.IsDead ()) {
 				DestroyImmediate (rat.gameObject);
@@ -51,4 +57,7 @@ public class MonoPlayer : MonoBehaviour {
 		return player.IsDead ();
 	}
 
+	private void RefreshHealthBar(){
+		playerHealthBar.value = player.Health;
+	}
 }
