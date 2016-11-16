@@ -12,6 +12,7 @@ public class NewBasementQuest : MonoBehaviour
 	public List<MonoRat> rats =  new List<MonoRat>();
 
 	private int remaining;
+	private bool finishedQuest= false;
 
 	void Start ()
 	{
@@ -21,11 +22,17 @@ public class NewBasementQuest : MonoBehaviour
 		InvokeRepeating ("Battle", 0f, secondsToAttack);
 	}
 
+	void OnGUI(){
+		if (finishedQuest) 
+			GUI.Label (new Rect (0, 50, 500, 20), "Parabéns você matou todos os ratos do porão!");	
+	}
+
 	public void Battle ()
 	{	
 		if (remaining == 0) {
 			Debug.Log ("Yooo");
 			Time.timeScale = 0;
+			finishedQuest = true;
 			return;
 		}
 		if (player.IsDead ()) {
@@ -43,5 +50,4 @@ public class NewBasementQuest : MonoBehaviour
 			}
 		}
 	}
-
 }
