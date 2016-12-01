@@ -18,8 +18,17 @@ public class BasementQuest : MonoBehaviour {
 			GUI.Label (new Rect (0, 0, 500, 20), "You loose!");
 			return;
 		}
-		if(GUI.Button(new Rect (0,20,100,50),"Attack")) manager.Attack ();
-		if(GUI.Button(new Rect (0,80,100,50),"Bag")) { }
-		if(GUI.Button(new Rect (0,140,100,50),"Run")) SceneManager.LoadScene("Scenes/BasementQuestEnter");
+	}
+
+
+	public void Attack(){
+		manager.Attack ();
+	}
+
+	public void OpenBag(){
+		Debug.Log("Open the bag!");
+	}
+	public void Run(){
+		SceneManager.LoadScene("Scenes/BasementQuestEnter");
 	}
 }
