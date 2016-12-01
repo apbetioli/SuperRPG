@@ -1,19 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour {
 
 	public GameObject playerGO;
-	public GameObject enemyGO;
+	public GameObject[] enemiesGO;
 	private Player player;
-	private Enemy enemy;
+	private Queue<Enemy> enemies = new Queue<Enemy>();
+	private Enemy currentEnemy;
+	private bool winner = false;
 
-	void Start(){
+	void Awake(){
 		player = playerGO.GetComponent<Player> ();
-		enemy = enemyGO.GetComponent<Enemy> ();
+			foreach(GameObject enemyGO in enemiesGO){
+				enemies.Enqueue(enemyGO.GetComponent<Enemy> ());
+			}
+	}
+	void Start(){
+		
+		currentEnemy = enemies.Dequeue();
 		Debug.Log ("Quest iniciada");
 		Debug.Log ("Player health: " + player.health);
-		Debug.Log ("Enemy health: " + enemy.health);
+		Debug.Log ("Enemy health: " + currentEnemy.health);
 	}
 
 	public void Attack(){
@@ -21,22 +30,38 @@ public class BattleManager : MonoBehaviour {
 	}
 
 	public bool PlayerWin(){
-		return enemy.IsDead ();
+		return winner;
 	}
 
 	public bool PlayerDead(){
+		winner = false;
 		return player.IsDead ();
 	}
 
 	IEnumerator CoolDown(){		
 		Debug.Log ("Wait x1: " + Time.time);
-		enemy.TakeDamage (player.attack);
-		Debug.Log ("Enemy health: " + enemy.health);
+		currentEnemy.TakeDamage (player.attack);
+		Debug.Log ("Enemy health: " + currentEnemy.health);		
+
+		if(enemies.Count == 0 && currentEnemy.IsDead()){
+			winner = true;
+		 	yield break;
+		}
+
+		if(enemies.Count > 0 && currentEnemy.IsDead()){
+			currentEnemy = enemies.Dequeue();
+			yield break;
+		}
 
 		yield return new WaitForSeconds(2);
 
 		Debug.Log ("Wait x2: " + Time.time);
-		player.TakeDamage (enemy.attack);
+		player.TakeDamage (currentEnemy.attack);
 		Debug.Log ("Player health: " + player.health);
+
+		
+		
+	
 	}
+
 }
