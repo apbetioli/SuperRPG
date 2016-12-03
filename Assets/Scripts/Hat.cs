@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hat : Item {
+public class Hat : Item
+{
 
 }

@@ -2,33 +2,48 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class BasementQuest : MonoBehaviour {
-	private BattleManager manager;
+public class BasementQuest : MonoBehaviour
+{
 
-	void Start(){
-		manager = GameObject.Find ("BattleManager").GetComponent<BattleManager> ();
-	}
+    private BattleManager manager;
 
-	void OnGUI(){ 	
-		if (manager.PlayerWin ()) {	
-			GUI.Label (new Rect (0, 0, 500, 20), "You win!");
-			return;
-		}
-		if (manager.PlayerDead ()) {
-			GUI.Label (new Rect (0, 0, 500, 20), "You loose!");
-			return;
-		}
-	}
+    void Awake()
+    {
+		manager = FindObjectOfType<BattleManager>();
+    }
+
+    void Start()
+    {
+        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
+    }
+
+    void OnGUI()
+    {
+        if (manager.PlayerWin())
+        {
+            GUI.Label(new Rect(0, 0, 500, 20), "You win!");
+            return;
+        }
+        if (manager.PlayerDead())
+        {
+            GUI.Label(new Rect(0, 0, 500, 20), "You loose!");
+            return;
+        }
+    }
 
 
-	public void Attack(){
-		manager.Attack ();
-	}
+    public void Attack()
+    {
+        manager.Attack();
+    }
 
-	public void OpenBag(){
-		Debug.Log("Open the bag!");
-	}
-	public void Run(){
-		SceneManager.LoadScene("Scenes/BasementQuestEnter");
-	}
+    public void OpenBag()
+    {
+        Debug.Log("Open the bag!");
+    }
+
+    public void Run()
+    {
+        SceneManager.LoadScene("BasementQuestEnter");
+    }
 }

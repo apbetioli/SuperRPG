@@ -1,14 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class Equip : MonoBehaviour {
+public class Equip : MonoBehaviour
+{
 
-	public Player player;
-	public Weapon weapon;
+    public Weapon weapon;
+	
+	private Player player;
 
-	public void DoEquip() {
-		if (player.CanEquipWeapon (weapon)) {
-			player.weapon = weapon;
-		}
-	}
+    void Awake()
+    {
+        player = FindObjectOfType<Player>();
+        if (player == null)
+        {
+            Debug.LogError("Player not found");
+            this.enabled = false;
+        }
+    }
+
+
+    public void Start()
+    {
+        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
+    }
+
+    public void DoEquip()
+    {
+        if (player.CanEquipWeapon(weapon))
+        {
+            player.weapon = weapon;
+        }
+    }
 }

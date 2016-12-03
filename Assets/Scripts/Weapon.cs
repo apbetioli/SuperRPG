@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : Item {
+public class Weapon : Item
+{
 
-	public float attackValue;
+    public float attackValue;
 }

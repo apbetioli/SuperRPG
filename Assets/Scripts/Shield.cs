@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shield : Item {
+public class Shield : Item
+{
 
-	public float defenseValue;
+    public float defenseValue;
 
 }
