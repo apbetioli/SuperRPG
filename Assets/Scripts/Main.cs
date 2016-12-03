@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class Main : MonoBehaviour
 {
-    private Player player;
-
-    public void Awake()
-    {
-        player = FindObjectOfType<Player>();
-        DontDestroyOnLoad(player);
-    }
-
+	
+	void Awake() {
+		SceneManager.LoadScene("Load", LoadSceneMode.Additive);
+	}
+	
     public void LoadCharacter()
     {
         SceneManager.LoadScene("Character");
