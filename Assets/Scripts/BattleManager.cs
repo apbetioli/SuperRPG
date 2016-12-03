@@ -4,22 +4,19 @@ using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour {
 
-	public GameObject playerGO;
-	public GameObject[] enemiesGO;
-	private Player player;
-	private Queue<Enemy> enemies = new Queue<Enemy>();
+	public Player player;
+	public Enemy[] enemies;
+	private Queue<Enemy> enemiesQueue = new Queue<Enemy>();
 	private Enemy currentEnemy;
 	private bool winner = false;
 
-	void Awake(){
-		player = playerGO.GetComponent<Player> ();
-			foreach(GameObject enemyGO in enemiesGO){
-				enemies.Enqueue(enemyGO.GetComponent<Enemy> ());
-			}
+	void Awake(){	
+		foreach(Enemy enemy in enemies)
+			enemiesQueue.Enqueue(enemy);			
 	}
 	void Start(){
 		
-		currentEnemy = enemies.Dequeue();
+		currentEnemy = enemiesQueue.Dequeue();
 		Debug.Log ("Quest iniciada");
 		Debug.Log ("Player health: " + player.health);
 		Debug.Log ("Enemy health: " + currentEnemy.health);
@@ -43,13 +40,13 @@ public class BattleManager : MonoBehaviour {
 		currentEnemy.TakeDamage (player.attack);
 		Debug.Log ("Enemy health: " + currentEnemy.health);		
 
-		if(enemies.Count == 0 && currentEnemy.IsDead()){
+		if(enemiesQueue.Count == 0 && currentEnemy.IsDead()){
 			winner = true;
 		 	yield break;
 		}
 
-		if(enemies.Count > 0 && currentEnemy.IsDead()){
-			currentEnemy = enemies.Dequeue();
+		if(enemiesQueue.Count > 0 && currentEnemy.IsDead()){
+			currentEnemy = enemiesQueue.Dequeue();
 			yield break;
 		}
 
