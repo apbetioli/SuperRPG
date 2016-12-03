@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
-
     public Enemy[] enemies;
 	public float waitTime = 0f;
 	

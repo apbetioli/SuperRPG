@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class BasementQuest : MonoBehaviour
 {
-
     private BattleManager manager;
 
     void Awake()

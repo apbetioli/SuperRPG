@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Equip : MonoBehaviour
 {
-
     public Weapon weapon;
 	
 	private Player player;
@@ -18,7 +17,6 @@ public class Equip : MonoBehaviour
         }
     }
 
-
     public void Start()
     {
         SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
@@ -29,6 +27,7 @@ public class Equip : MonoBehaviour
         if (player.CanEquipWeapon(weapon))
         {
             player.weapon = weapon;
+			DontDestroyOnLoad(weapon);
         }
     }
 }
