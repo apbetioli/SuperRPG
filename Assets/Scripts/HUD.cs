@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void OnGUI()
     {
         health.text = "Health: " + player.health;
     }

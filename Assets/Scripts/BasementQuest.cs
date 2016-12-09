@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BasementQuest : MonoBehaviour
 {
+    public Text currentEnemyHealth;
+    
     private BattleManager manager;
 
     void Awake()
@@ -17,6 +20,9 @@ public class BasementQuest : MonoBehaviour
 
     void OnGUI()
     {
+        if(manager.currentEnemy != null)
+            currentEnemyHealth.text = "Current enemy health: " + manager.currentEnemy.health;
+        
         if (manager.PlayerWin())
         {
             GUI.Label(new Rect(0, 0, 500, 20), "You win!");

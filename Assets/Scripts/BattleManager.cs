@@ -8,7 +8,8 @@ public class BattleManager : MonoBehaviour
 	public float waitTime = 0f;
 	
     private Queue<Enemy> enemiesQueue = new Queue<Enemy>();
-    private Enemy currentEnemy;
+    [HideInInspector]
+    public Enemy currentEnemy;
     private bool winner = false;
 
     private Player player;

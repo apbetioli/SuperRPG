@@ -20,7 +20,7 @@ public class CharacterHUD : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void OnGUI()
     {
         stamina.text = "Stamina: " + player.GetUsedStamina() + " / " + player.stamina;
         attack.text = "Attack: " + player.attack;
