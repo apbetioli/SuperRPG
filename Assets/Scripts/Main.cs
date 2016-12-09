@@ -8,6 +8,7 @@ public class Main : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         if(player == null)
 		    SceneManager.LoadScene("Load", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Additive);
 	}
 	
     public void LoadCharacter()

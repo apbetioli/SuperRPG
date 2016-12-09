@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class CharacterHUD : MonoBehaviour
 {
-    public Text health;
+
+    public Text stamina;
+    public Text attack;
+    public Text defense;
 	
 	private Player player;
 
@@ -19,6 +22,8 @@ public class HUD : MonoBehaviour
 
     public void Update()
     {
-        health.text = "Health: " + player.health;
+        stamina.text = "Stamina: " + player.GetUsedStamina() + " / " + player.stamina;
+        attack.text = "Attack: " + player.attack;
+        defense.text = "Defense: " + player.defense;
     }
 }

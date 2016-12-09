@@ -2,13 +2,26 @@
 
 public class Player : MonoBehaviour
 {
-
-    public float health = 100;
+    public float maxHealth = 100;
     public float stamina = 10;
 
     public Weapon weapon;
     public Shield shield;
     public Hat hat;
+
+    private float _health;
+
+    public float health
+    {
+        get
+        {
+            return _health;
+        }
+        set
+        {
+            _health = Mathf.Clamp(value, 0, maxHealth);
+        }
+    }
 
     public float attack
     {
@@ -24,6 +37,11 @@ public class Player : MonoBehaviour
         {
             return shield.defenseValue;
         }
+    }
+
+    void Start()
+    {
+        health = maxHealth;
     }
 
     public float GetUsedStamina()
@@ -45,4 +63,10 @@ public class Player : MonoBehaviour
     {
         return health <= 0;
     }
+
+    public void Heal(float healFactor)
+    {
+        health += maxHealth * healFactor;
+    }
+
 }

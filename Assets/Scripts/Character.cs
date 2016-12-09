@@ -20,6 +20,10 @@ public class Character : MonoBehaviour
         }
     }
 	
+	void Start() {
+		SceneManager.LoadSceneAsync("CharacterHUD", LoadSceneMode.Additive);
+	}
+	
 	void Update() {
 		hat.text = "Hat: " + player.hat.name;
 		shield.text = "Shield: " + player.shield.name;

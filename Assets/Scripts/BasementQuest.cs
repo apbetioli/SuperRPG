@@ -12,7 +12,7 @@ public class BasementQuest : MonoBehaviour
 
     void Start()
     {
-        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Additive);
     }
 
     void OnGUI()
@@ -42,6 +42,6 @@ public class BasementQuest : MonoBehaviour
 
     public void Run()
     {
-        SceneManager.LoadScene("BasementQuestEnter");
+        SceneManager.LoadScene("Main");
     }
 }
