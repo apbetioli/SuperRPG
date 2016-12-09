@@ -31,9 +31,6 @@ public class BattleManager : MonoBehaviour
     {
         player.inQuest = true;
         currentEnemy = enemiesQueue.Dequeue();
-        Debug.Log("Quest iniciada");
-        Debug.Log("Player health: " + player.health);
-        Debug.Log("Enemy health: " + currentEnemy.health);
     }
 
     public void Attack()
@@ -54,9 +51,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        Debug.Log("Wait x1: " + Time.time);
         currentEnemy.TakeDamage(player.attack);
-        Debug.Log("Enemy health: " + currentEnemy.health);
 
         if (enemiesQueue.Count == 0 && currentEnemy.IsDead())
         {
@@ -72,9 +67,7 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        Debug.Log("Wait x2: " + Time.time);
         player.TakeDamage(currentEnemy.attack);
-        Debug.Log("Player health: " + player.health);
     }
 
     public void Run() {
