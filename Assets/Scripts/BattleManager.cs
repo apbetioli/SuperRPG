@@ -28,6 +28,7 @@ public class BattleManager : MonoBehaviour
 	
     void Start()
     {
+        player.inQuest = true;
         currentEnemy = enemiesQueue.Dequeue();
         Debug.Log("Quest iniciada");
         Debug.Log("Player health: " + player.health);
@@ -75,4 +76,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Player health: " + player.health);
     }
 
+    public void Run() {
+        player.inQuest = false;
+    }
 }

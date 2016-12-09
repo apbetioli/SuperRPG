@@ -42,6 +42,7 @@ public class BasementQuest : MonoBehaviour
 
     public void Run()
     {
+        manager.Run();
         SceneManager.LoadScene("Main");
     }
 }

@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public Weapon weapon;
     public Shield shield;
     public Hat hat;
+    
+    public bool inQuest = false;
 
     private float _health;
 
@@ -66,7 +68,8 @@ public class Player : MonoBehaviour
 
     public void Heal(float healFactor)
     {
-        health += maxHealth * healFactor;
+        if(!inQuest)
+            health += maxHealth * healFactor;
     }
 
 }
