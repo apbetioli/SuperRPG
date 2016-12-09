@@ -1,5 +1,7 @@
-﻿public class Weapon : Item
+﻿using System;
+using UnityEngine;
+public class Weapon : Item
 {
+    public int attackValue;
 
-    public float attackValue;
 }

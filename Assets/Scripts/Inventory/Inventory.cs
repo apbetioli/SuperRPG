@@ -13,9 +13,20 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryItem;
     int slotAmount;
 
-    public List<ItemDTO> items = new List<ItemDTO>();
+    public List<Item> items = new List<Item>();
     public List<GameObject> slots = new List<GameObject>();
 
+    private Player player;
+
+    void Awake()
+    {
+        player = FindObjectOfType<Player>();
+        if (player == null)
+        {
+            Debug.LogError("Player not found");
+            this.enabled = false;
+        }
+    }
     void Start()
     {
         database = GetComponent<ItemDatabase>();
@@ -25,26 +36,22 @@ public class Inventory : MonoBehaviour
         slotPanel = inventoryPanel.transform.FindChild("Slot Panel").gameObject;
         for (int i = 0; i < slotAmount; i++)
         {
-            items.Add(new ItemDTO());
+            items.Add(new Item());
             slots.Add(Instantiate(inventorySlot));
             slots[i].GetComponent<Slot>().id = i;
             slots[i].transform.SetParent(slotPanel.transform);
         }
-
-        AddItemDTO(0);
-        AddItemDTO(1);
-        AddItemDTO(1);
-        AddItemDTO(1);
-        AddItemDTO(1);
     }
 
 
-    public void AddItemDTO(int id)
+    public void AddItem(int id)
     {
-        ItemDTO itemDTOToAdd = database.FetchItemDTOByID(id);
 
-        if (itemDTOToAdd.Stackable && CheckIfItemIsInInventory(itemDTOToAdd))
+        Item itemToAdd = database.FetchItemDTOByID(id);
+
+        if (itemToAdd.Stackable && CheckIfItemIsInInventory(itemToAdd))
         {
+
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == id)
@@ -58,26 +65,27 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == -1)
                 {
-                    items[i] = itemDTOToAdd;
+                    items[i] = itemToAdd;
                     GameObject itemDTOObj = Instantiate(inventoryItem);
-                    itemDTOObj.GetComponent<ItemData>().itemDTO = itemDTOToAdd;
+                    itemDTOObj.GetComponent<ItemData>().item = itemToAdd;
                     itemDTOObj.GetComponent<ItemData>().amount = 1;
                     itemDTOObj.GetComponent<ItemData>().slot = i;
                     itemDTOObj.transform.SetParent(slots[i].transform);
-                    itemDTOObj.transform.position = Vector2.zero;
-                    itemDTOObj.GetComponent<Image>().sprite = itemDTOToAdd.Sprite;
-                    itemDTOObj.name = itemDTOToAdd.Title;
+                    itemDTOObj.transform.position = slots[i].transform.position;
+                    itemDTOObj.GetComponent<Image>().sprite = itemToAdd.Sprite;
+                    itemDTOObj.name = itemToAdd.Title;
                     break;
                 }
             }
         }
     }
 
-    bool CheckIfItemIsInInventory(ItemDTO item)
+    bool CheckIfItemIsInInventory(Item item)
     {
         for (int i = 0; i < items.Count; i++)
             if (items[i].ID == item.ID)
