@@ -29,5 +29,4 @@ public class Character : MonoBehaviour
 	public void Back() {
 		SceneManager.LoadScene("Main");
 	}
-
 }

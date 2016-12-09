@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Tooltip : MonoBehaviour
 {
 
-    private ItemDTO itemDTO;
+    private Item item;
     private string data;
     private GameObject tooltip;
 
@@ -22,9 +22,9 @@ public class Tooltip : MonoBehaviour
 		}
 	}
 
-    public void Activate(ItemDTO itemDTO)
+    public void Activate(Item item)
     {
-        this.itemDTO = itemDTO;
+        this.item = item;
         ConstructDataString();
         tooltip.SetActive(true);
     }
@@ -36,7 +36,7 @@ public class Tooltip : MonoBehaviour
 
     public void ConstructDataString()
     {
-        data = "<color=#0473f0><b>"+itemDTO.Title + "</b></color>";
+        data = "<color=#0473f0><b>"+item.Title + "</b></color>";
 		tooltip.transform.GetChild(0).GetComponent<Text>().text = data;
     }
 }

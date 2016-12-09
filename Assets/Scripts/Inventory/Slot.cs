@@ -18,8 +18,8 @@ public class Slot : MonoBehaviour, IDropHandler
         ItemData droppedItem = eventData.pointerDrag.GetComponent<ItemData>();
         if (inventory.items[id].ID == -1)
         {
-            inventory.items[droppedItem.slot] = new ItemDTO();
-            inventory.items[id] = droppedItem.itemDTO;
+            inventory.items[droppedItem.slot] = new Item();
+            inventory.items[id] = droppedItem.item;
             droppedItem.slot = id;
         }
         else if (droppedItem.slot != id)
@@ -33,8 +33,8 @@ public class Slot : MonoBehaviour, IDropHandler
             droppedItem.transform.SetParent(this.transform);
             droppedItem.transform.position = this.transform.position;
 
-            inventory.items[droppedItem.slot] = item.GetComponent<ItemData>().itemDTO;
-            inventory.items[id] = droppedItem.itemDTO;
+            inventory.items[droppedItem.slot] = item.GetComponent<ItemData>().item;
+            inventory.items[id] = droppedItem.item;
         }
     }
 }

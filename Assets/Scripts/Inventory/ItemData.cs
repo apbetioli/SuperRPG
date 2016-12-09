@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    public ItemDTO itemDTO;
+    public Item item;
     public int amount;
     public int slot;
     private Vector2 offset;
@@ -23,9 +23,8 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
-        if (itemDTO != null)
+        if (item != null)
         {
-            // offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
             this.transform.SetParent(this.transform.parent.parent);
             this.transform.position = eventData.position - offset;
             GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -35,7 +34,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        if (itemDTO != null)
+        if (item != null)
         {
             this.transform.position = eventData.position - offset;
         }
@@ -50,7 +49,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        if (itemDTO != null)
+        if (item != null)
         {
             offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
         }
@@ -58,7 +57,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        tooltip.Activate(itemDTO);
+        tooltip.Activate(item);
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
