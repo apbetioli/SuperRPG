@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class BattleManager : MonoBehaviour
 {
     public Enemy[] enemies;
-	public float waitTime = 0f;
-	
+    public float waitTime = 0f;
+
     private Queue<Enemy> enemiesQueue = new Queue<Enemy>();
     [HideInInspector]
     public Enemy currentEnemy;
@@ -22,11 +23,11 @@ public class BattleManager : MonoBehaviour
             Debug.LogError("Player not found");
             this.enabled = false;
         }
-		
+
         foreach (Enemy enemy in enemies)
             enemiesQueue.Enqueue(enemy);
     }
-	
+
     void Start()
     {
         player.inQuest = true;
@@ -36,6 +37,16 @@ public class BattleManager : MonoBehaviour
     public void Attack()
     {
         StartCoroutine(CoolDown());
+    }
+
+    internal bool HasPotionOfLife()
+    {
+        return player.HasPotionOfLife();
+    }
+
+    public void UseHealingPotion()
+    {
+        player.UseHealingPotion();
     }
 
     public bool PlayerWin()
@@ -70,7 +81,8 @@ public class BattleManager : MonoBehaviour
         player.TakeDamage(currentEnemy.attack);
     }
 
-    public void Run() {
+    public void Run()
+    {
         player.inQuest = false;
     }
 }

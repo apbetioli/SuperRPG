@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 public class BasementQuest : MonoBehaviour
 {
     public Text currentEnemyHealth;
-    
+
     private BattleManager manager;
 
     void Awake()
     {
-		manager = FindObjectOfType<BattleManager>();
+        manager = FindObjectOfType<BattleManager>();
     }
 
     void Start()
@@ -20,9 +20,9 @@ public class BasementQuest : MonoBehaviour
 
     void OnGUI()
     {
-        if(manager.currentEnemy != null)
+        if (manager.currentEnemy != null)
             currentEnemyHealth.text = "Current enemy health: " + manager.currentEnemy.health;
-        
+
         if (manager.PlayerWin())
         {
             GUI.Label(new Rect(0, 0, 500, 20), "You win!");
@@ -33,6 +33,7 @@ public class BasementQuest : MonoBehaviour
             GUI.Label(new Rect(0, 0, 500, 20), "You loose!");
             return;
         }
+
     }
 
 
@@ -41,9 +42,9 @@ public class BasementQuest : MonoBehaviour
         manager.Attack();
     }
 
-    public void OpenBag()
+    public void UseHealingPotion()
     {
-        Debug.Log("Open the bag!");
+        manager.UseHealingPotion();
     }
 
     public void Run()

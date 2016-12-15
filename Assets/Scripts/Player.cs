@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -8,7 +10,9 @@ public class Player : MonoBehaviour
     public Weapon weapon;
     public Shield shield;
     public Hat hat;
-    
+
+    public Queue<SmallHealingPotion> lifePotions = new Queue<SmallHealingPotion>();
+
     public bool inQuest = false;
 
     private float _health;
@@ -51,6 +55,11 @@ public class Player : MonoBehaviour
         return weapon.stamina + shield.stamina + hat.stamina;
     }
 
+    internal bool HasPotionOfLife()
+    {
+        return lifePotions.Count > 0;
+    }
+
     public bool CanEquipWeapon(Weapon weapon)
     {
         return GetUsedStamina() - this.weapon.stamina + weapon.stamina < stamina;
@@ -68,8 +77,14 @@ public class Player : MonoBehaviour
 
     public void Heal(float healFactor)
     {
-        if(!inQuest)
+        if (!inQuest)
             health += maxHealth * healFactor;
+    }
+
+    public void UseHealingPotion()
+    {
+        if (HasPotionOfLife())
+            this.health += lifePotions.Dequeue().healingRecovery;
     }
 
 }
