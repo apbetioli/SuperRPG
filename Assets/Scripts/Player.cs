@@ -55,6 +55,15 @@ public class Player : MonoBehaviour
         return weapon.stamina + shield.stamina + hat.stamina;
     }
 
+    internal void Reborn()
+    {
+        health = maxHealth;
+        Debug.Log("reborn " + (this.gameObject.GetComponent<Weapon>() != weapon));
+        if(this.gameObject.GetComponent<Weapon>() != weapon)
+            Destroy(weapon.gameObject);            
+        weapon = this.gameObject.GetComponent<Weapon>();
+    }
+
     internal bool HasPotionOfLife()
     {
         return lifePotions.Count > 0;

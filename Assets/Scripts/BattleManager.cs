@@ -28,10 +28,20 @@ public class BattleManager : MonoBehaviour
             enemiesQueue.Enqueue(enemy);
     }
 
+    internal void NextFloor()
+    {
+
+    }
+
     void Start()
     {
         player.inQuest = true;
         currentEnemy = enemiesQueue.Dequeue();
+    }
+
+    internal void GameOver()
+    {
+        player.Reborn();
     }
 
     public void Attack()

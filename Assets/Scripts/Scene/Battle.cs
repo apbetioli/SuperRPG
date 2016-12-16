@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BasementQuest : MonoBehaviour
+public class Battle : MonoBehaviour
 {
     public Text currentEnemyHealth;
 
@@ -26,12 +26,14 @@ public class BasementQuest : MonoBehaviour
         if (manager.PlayerWin())
         {
             GUI.Label(new Rect(0, 0, 500, 20), "You win!");
-            return;
+            manager.NextFloor();
+            Run();
         }
         if (manager.PlayerDead())
         {
             GUI.Label(new Rect(0, 0, 500, 20), "You loose!");
-            return;
+            manager.GameOver();
+            Run();
         }
 
     }
@@ -49,7 +51,8 @@ public class BasementQuest : MonoBehaviour
 
     public void Run()
     {
+        manager.GameOver();
         manager.Run();
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Main_Shop");
     }
 }

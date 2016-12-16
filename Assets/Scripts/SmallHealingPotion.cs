@@ -3,9 +3,18 @@ public class SmallHealingPotion : Item
 {
 
     public int healingRecovery;
-		private Player player;
+    private Player player;
 
     void Awake()
+    {
+       //FindPlayer();
+    }
+
+    public void Start(){
+        FindPlayer();
+    }
+
+    private void FindPlayer()
     {
         player = FindObjectOfType<Player>();
         if (player == null)
@@ -14,10 +23,15 @@ public class SmallHealingPotion : Item
             this.enabled = false;
         }
     }
-
     public void Purchase()
     {
-		player.lifePotions.Enqueue(this);
+        player.lifePotions.Enqueue(this);
+    }
+
+
+    public void UseItem()
+    {
+        player.health += healingRecovery;
     }
 
 }

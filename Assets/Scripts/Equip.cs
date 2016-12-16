@@ -4,10 +4,20 @@ using UnityEngine.SceneManagement;
 public class Equip : MonoBehaviour
 {
     public Weapon weapon;
-	
-	private Player player;
+
+    private Player player;
 
     void Awake()
+    {
+        //FindPlayer();
+    }
+
+    public void Start()
+    {
+        FindPlayer();
+    }
+
+    private void FindPlayer()
     {
         player = FindObjectOfType<Player>();
         if (player == null)
@@ -17,17 +27,12 @@ public class Equip : MonoBehaviour
         }
     }
 
-    public void Start()
-    {
-        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
-    }
-
     public void DoEquip()
     {
         if (player.CanEquipWeapon(weapon))
         {
             player.weapon = weapon;
-			DontDestroyOnLoad(weapon);
+            DontDestroyOnLoad(weapon);
         }
     }
 }
