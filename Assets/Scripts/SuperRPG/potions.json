@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Health potion",
+        "hp": 8,
+        "maxHp": 0,
+        "price": 5
+    },
+    {
+        "name": "Super health potion",
+        "hp": 50,
+        "maxHp": 0,
+        "price": 25
+    },
+    {
+        "name": "Health pendant",
+        "hp": 5,
+        "maxHp": 5,
+        "price": 30
+    },
+    {
+        "name": "Health crystal",
+        "hp": 20,
+        "maxHp": 20,
+        "price": 100
+    }
+]
