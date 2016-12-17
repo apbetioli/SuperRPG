@@ -10,4 +10,7 @@ public class Turn : MonoBehaviour
 		enemies = GetComponentsInChildren<Enemy>();
 	}
 		
+	public void OnEnable() {
+		Reset ();
+	}
 }

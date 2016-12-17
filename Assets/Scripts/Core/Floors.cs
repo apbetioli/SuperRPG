@@ -8,4 +8,8 @@ public class Floors : MonoBehaviour
 	{
 		floors = GetComponentsInChildren<Floor> ();
 	}
+
+	public void OnEnable() {
+		Reset ();
+	}
 }

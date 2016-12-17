@@ -21,7 +21,11 @@ public class Battle : MonoBehaviour
     void OnGUI()
     {
         if (manager.currentEnemy != null)
-            currentEnemyHealth.text = "Current enemy health: " + manager.currentEnemy.health;
+			currentEnemyHealth.text = "Enemy: " + manager.currentEnemy.name
+				+ " damage:" + manager.currentEnemy.damage
+				+ " defense:" + manager.currentEnemy.defense
+				+ " coins:" + manager.currentEnemy.coins
+				+ " health:" + manager.currentEnemy.health;
 
         if (manager.PlayerWin())
         {

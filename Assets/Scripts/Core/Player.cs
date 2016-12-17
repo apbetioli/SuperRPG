@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
 	public int maxHealth = 10;
 	public int coins = 15;
-	public int damage = 1;
-	public int defense = 0;
-	public int floor = 0;
+
+	public Weapon weapon;
+	public Shield shield;
     
 	private int _health = 10;
 
@@ -18,14 +18,21 @@ public class Player : MonoBehaviour
         set { _health = Mathf.Clamp(value, 0, maxHealth); }
     }
 
+	public int defense
+	{
+		get { return shield.defense; }
+	}
+
+	public int damage
+	{
+		get { return weapon.damage; }
+	}
+
 	public void Reborn()
 	{
 		health = 10;
 		maxHealth = 10;
 		coins = 15;
-		damage = 1;
-		defense = 0;
-		floor = 0;
 	}
     
 	public void TakeDamage(int damage)

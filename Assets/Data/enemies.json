@@ -1,128 +1,127 @@
-[
-    {
-        "name": "Chest",
-        "damage": { "min": 0, "max": 0 },
-        "defense": { "value": 0 },
-        "coins": { "value": 10 }, //overriden
-        "hp": { "value": 10 }
-    },
-    {
-        "name": "Blob",
-        "damage": { "min": 1, "max": 3 },
-        "defense": { "value": 0 },
-        "coins": { "min": 5, "max": 8 },
-        "hp": { "value": 3 }
-    },
-    {
-        "name": "Ferocious Blob",
-        "damage": { "min": 2, "max": 4 },
-        "defense": { "value": 0 },
-        "coins": { "min": 7, "max": 10 },
-        "hp": { "value": 2 }
-    },
-    {
-        "name": "Goblin",
-        "damage": { "value": 4 },
-        "defense": { "value": 1 },
-        "coins": { "value": 15 },
-        "hp": { "value": 5 }
-    },
-    {
-        "name": "Ferocious Goblin",
-        "damage": { "value": 5 },
-        "defense": { "value": 3 },
-        "coins": { "value": 20 },
-        "hp": { "value": 5 }
-    },
-    {
-        "name": "Skeleton",
-        "damage": { "value": 6 },
-        "defense": { "value": 1 },
-        "coins": { "value": 25 },
-        "hp": { "value": 7 }
-    },
-    {
-        "name": "Bill Gates Skeleton",
-        "damage": { "value": 6 },
-        "defense": { "value": 1 },
-        "coins": { "value": 50 },
-        "hp": { "value": 7 }
-    },
-    {
-        "name": "Ferocious Skeleton",
-        "damage": { "value": 8 },
-        "defense": { "value": 1 },
-        "coins": { "value": 40 },
-        "hp": { "value": 10 }
-    },
-    {
-        "name": "Small spiders",
-        "damage": { "value": 9 },
-        "defense": { "value": 2 },
-        "coins": { "value": 9 },
-        "hp": { "value": 15 }
-    },
-    {
-        "name": "Big spider",
-        "damage": { "value": 10 },
-        "defense": { "value": 5 },
-        "coins": { "min": 100, "max": 200 },
-        "hp": { "value": 25 }
-    },
-    {
-        "name": "Baby vampire",
-        "damage": { "value": 10 },
-        "defense": { "value": 2 },
-        "coins": { "value": 8 },
-        "hp": { "value": 30 }
-    },
-    {
-        "name": "Thing 1",
-        "damage": { "value": 20 },
-        "defense": { "value": 3 },
-        "coins": { "value": 120 },
-        "hp": { "value": 10 }
-    },
-    {
-        "name": "Thing 2",
-        "damage": { "value": 12 },
-        "defense": { "value": 6 },
-        "coins": { "value": 120 },
-        "hp": { "value": 30 }
-    },
-    {
-        "name": "Thing 3",
-        "damage": { "value": 14 },
-        "defense": { "value": 4 },
-        "coins": { "value": 120 },
-        "hp": { "value": 20 }
-    },
-    {
-        "name": "Bomb",
-        "damage": { "value": 99 },
-        "defense": { "value": 0 },
-        "coins": { "value": 0 },
-        "hp": { "value": 12 }
-    },
-    {
-        "name": "Corpse 1",
-        "damage": { "value": 0 },
-        "defense": { "value": 0 },
-        "coins": { "min": 0, "max": 300 },
-        "hp": { "value": 0 }
-    },
-    {
-        "name": "Corpse 2",
-        "damage": { "value": 0 },
-        "defense": { "value": 0 },
-        "coins": { "min": 0, "max": 300 },
-        "hp": { "value": 0 }
-    },
-    {
-        "name": "Dragon",
-        "damage": { "min": 28, "max": 32 },
-        "defense": { "min": 7, "max": 9 },
-        "coins": { "value":  1000 },
-        "hp": { "min": 45, "max": 55 }
-    }
-]
+    [{
+            "name": "Chest",
+            "damage": { "min": 0, "max": 0 },
+            "defense": { "value": 0 },
+            "coins": { "value": 10 }, //overriden
+            "hp": { "value": 10 }
+        },
+        {
+            "name": "Blob",
+            "damage": { "min": 1, "max": 3 },
+            "defense": { "value": 0 },
+            "coins": { "min": 5, "max": 8 },
+            "hp": { "value": 3 }
+        },
+        {
+            "name": "Ferocious Blob",
+            "damage": { "min": 2, "max": 4 },
+            "defense": { "value": 0 },
+            "coins": { "min": 7, "max": 10 },
+            "hp": { "value": 2 }
+        },
+        {
+            "name": "Goblin",
+            "damage": { "value": 4 },
+            "defense": { "value": 1 },
+            "coins": { "value": 15 },
+            "hp": { "value": 5 }
+        },
+        {
+            "name": "Ferocious Goblin",
+            "damage": { "value": 5 },
+            "defense": { "value": 3 },
+            "coins": { "value": 20 },
+            "hp": { "value": 5 }
+        },
+        {
+            "name": "Skeleton",
+            "damage": { "value": 6 },
+            "defense": { "value": 1 },
+            "coins": { "value": 25 },
+            "hp": { "value": 7 }
+        },
+        {
+            "name": "Bill Gates Skeleton",
+            "damage": { "value": 6 },
+            "defense": { "value": 1 },
+            "coins": { "value": 50 },
+            "hp": { "value": 7 }
+        },
+        {
+            "name": "Ferocious Skeleton",
+            "damage": { "value": 8 },
+            "defense": { "value": 1 },
+            "coins": { "value": 40 },
+            "hp": { "value": 10 }
+        },
+        {
+            "name": "Small spiders",
+            "damage": { "value": 9 },
+            "defense": { "value": 2 },
+            "coins": { "value": 9 },
+            "hp": { "value": 15 }
+        },
+        {
+            "name": "Big spider",
+            "damage": { "value": 10 },
+            "defense": { "value": 5 },
+            "coins": { "min": 100, "max": 200 },
+            "hp": { "value": 25 }
+        },
+        {
+            "name": "Baby vampire",
+            "damage": { "value": 10 },
+            "defense": { "value": 2 },
+            "coins": { "value": 8 },
+            "hp": { "value": 30 }
+        },
+        {
+            "name": "Thing 1",
+            "damage": { "value": 20 },
+            "defense": { "value": 3 },
+            "coins": { "value": 120 },
+            "hp": { "value": 10 }
+        },
+        {
+            "name": "Thing 2",
+            "damage": { "value": 12 },
+            "defense": { "value": 6 },
+            "coins": { "value": 120 },
+            "hp": { "value": 30 }
+        },
+        {
+            "name": "Thing 3",
+            "damage": { "value": 14 },
+            "defense": { "value": 4 },
+            "coins": { "value": 120 },
+            "hp": { "value": 20 }
+        },
+        {
+            "name": "Bomb",
+            "damage": { "value": 99 },
+            "defense": { "value": 0 },
+            "coins": { "value": 0 },
+            "hp": { "value": 12 }
+        },
+        {
+            "name": "Corpse 1",
+            "damage": { "value": 0 },
+            "defense": { "value": 0 },
+            "coins": { "min": 0, "max": 300 },
+            "hp": { "value": 0 }
+        },
+        {
+            "name": "Corpse 2",
+            "damage": { "value": 0 },
+            "defense": { "value": 0 },
+            "coins": { "min": 0, "max": 300 },
+            "hp": { "value": 0 }
+        },
+        {
+            "name": "Dragon",
+            "damage": { "min": 28, "max": 32 },
+            "defense": { "min": 7, "max": 9 },
+            "coins": { "value": 1000 },
+            "hp": { "min": 45, "max": 55 }
+        }
+    ]

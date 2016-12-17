@@ -28,12 +28,6 @@ public class Enemy : MonoBehaviour
 		defense = Random.Range (defenseMin, defenseMax+1);
 		coins = Random.Range (coinsMin, coinsMax);
 		health = Random.Range (healthMin, healthMax);
-
-		Debug.Log (name
-		+ " damage:" + damage
-		+ " defense:" + defense
-		+ " coins:" + coins
-		+ " health:" + health);
 	}
 
 	public void TakeDamage (int damage)

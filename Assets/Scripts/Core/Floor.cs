@@ -11,4 +11,8 @@ public class Floor : MonoBehaviour
 		turns = GetComponentsInChildren<Turn> ();
 		items = GetComponentsInChildren<Item> (); 
 	}
+
+	public void OnEnable() {
+		Reset ();
+	}
 }
