@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gloves : Item {
+public class Gloves : InventoryItem {
 
 }

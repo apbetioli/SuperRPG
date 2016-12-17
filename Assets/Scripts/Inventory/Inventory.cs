@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryItem;
     int slotAmount;
 
-    public List<Item> items = new List<Item>();
+    public List<InventoryItem> items = new List<InventoryItem>();
     public List<GameObject> slots = new List<GameObject>();
 
     private Player player;
@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
         slotPanel = inventoryPanel.transform.FindChild("Slot Panel").gameObject;
         for (int i = 0; i < slotAmount; i++)
         {
-            items.Add(new Item());
+            items.Add(new InventoryItem());
             slots.Add(Instantiate(inventorySlot));
             slots[i].GetComponent<Slot>().id = i;
             slots[i].transform.SetParent(slotPanel.transform);
@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(int id)
     {
 
-        Item itemToAdd = database.FetchItemDTOByID(id);
+        InventoryItem itemToAdd = database.FetchItemDTOByID(id);
 
         if (itemToAdd.Stackable && CheckIfItemIsInInventory(itemToAdd))
         {
@@ -85,7 +85,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    bool CheckIfItemIsInInventory(Item item)
+    bool CheckIfItemIsInInventory(InventoryItem item)
     {
         for (int i = 0; i < items.Count; i++)
             if (items[i].ID == item.ID)

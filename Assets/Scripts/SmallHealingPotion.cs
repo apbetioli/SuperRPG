@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-public class SmallHealingPotion : Item
+
+public class SmallHealingPotion : InventoryItem
 {
 
     public int healingRecovery;
@@ -23,7 +24,8 @@ public class SmallHealingPotion : Item
             this.enabled = false;
         }
     }
-    public void Purchase()
+
+    public override void Purchase()
     {
         player.lifePotions.Enqueue(this);
     }

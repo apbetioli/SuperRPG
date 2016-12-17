@@ -88,7 +88,7 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        player.TakeDamage(currentEnemy.attack);
+        player.TakeDamage(currentEnemy.damage);
     }
 
     public void Run()

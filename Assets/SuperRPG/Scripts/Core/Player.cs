@@ -4,8 +4,8 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float stamina = 10;
+	public int maxHealth = 100;
+	public int stamina = 10;
 
     public Weapon weapon;
     public Shield shield;
@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
 
     public bool inQuest = false;
 
-    private float _health;
+	private int _health;
 
-    public float health
+	public int health
     {
         get
         {
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float attack
+    public int attack
     {
         get
         {
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float defense
+	public int defense
     {
         get
         {
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         health = maxHealth;
     }
 
-    public float GetUsedStamina()
+	public int GetUsedStamina()
     {
         return weapon.stamina + shield.stamina + hat.stamina;
     }
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         return GetUsedStamina() - this.weapon.stamina + weapon.stamina < stamina;
     }
 
-    public void TakeDamage(float damage)
+	public void TakeDamage(int damage)
     {
         health -= damage;
     }
@@ -84,10 +84,10 @@ public class Player : MonoBehaviour
         return health <= 0;
     }
 
-    public void Heal(float healFactor)
+	public void Heal(float healFactor)
     {
         if (!inQuest)
-            health += maxHealth * healFactor;
+			health += Mathf.RoundToInt(maxHealth * healFactor);
     }
 
     public void UseHealingPotion()

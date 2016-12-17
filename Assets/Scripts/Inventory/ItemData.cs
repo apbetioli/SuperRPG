@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    public Item item;
+    public InventoryItem item;
     public int amount;
     public int slot;
     private Vector2 offset;

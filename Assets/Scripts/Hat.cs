@@ -1,4 +1,4 @@
-﻿public class Hat : Item
+﻿public class Hat : InventoryItem
 {
 
 }

@@ -5,7 +5,7 @@ using System.IO;
 public class ItemDatabase : MonoBehaviour
 {
 
-    private List<Item> database = new List<Item>();
+    private List<InventoryItem> database = new List<InventoryItem>();
     private JsonData itemData;
 
     void Start()
@@ -14,7 +14,7 @@ public class ItemDatabase : MonoBehaviour
         ConstructItemDatabase();
     }
 
-    public Item FetchItemDTOByID(int id)
+    public InventoryItem FetchItemDTOByID(int id)
     {
         for (int i = 0; i < database.Count; i++)
         {
@@ -28,7 +28,7 @@ public class ItemDatabase : MonoBehaviour
     {
         for (int i = 0; i < itemData.Count; i++)
         {
-            database.Add(new Item(
+            database.Add(new InventoryItem(
                 (int)itemData[i]["id"],
                 itemData[i]["title"].ToString(),
                 (int)itemData[i]["value"],

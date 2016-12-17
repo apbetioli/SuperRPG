@@ -1,6 +1,6 @@
-﻿public class Shield : Item
+﻿public class Shield : InventoryItem
 {
 
-    public float defenseValue;
+    public int defenseValue;
 
 }

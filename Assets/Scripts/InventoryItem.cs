@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour, Purchasable
+public class InventoryItem : MonoBehaviour, Purchasable
 {
 
-    public float stamina;
+	public int stamina;
     public int IdItem;
     public int ID { get; set; }
     public string Title { get; set; }
@@ -17,7 +17,7 @@ public class Item : MonoBehaviour, Purchasable
     public string Slug { get; set; }
     public Sprite Sprite { get; set; }
 
-    public Item(int id, string title, int value, int power, int defence, string description, bool stackable, int rarity, string slug)
+    public InventoryItem(int id, string title, int value, int power, int defence, string description, bool stackable, int rarity, string slug)
     {
         this.ID = id;
         this.Title = title;
@@ -31,17 +31,17 @@ public class Item : MonoBehaviour, Purchasable
         this.Sprite = Resources.Load<Sprite>("Sprites/Items/" + slug);
     }
 
-    public Item()
+    public InventoryItem()
     {
         this.ID = -1;
     }
 
-     public Item(int id)
+     public InventoryItem(int id)
     {
         this.ID = id;
     }
     
-    public void Purchase()
+    public virtual void Purchase()
     {
          FindObjectOfType<Inventory>().AddItem(IdItem);
     }
