@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 public class Floor : MonoBehaviour
 {
+	[HideInInspector]
 	public Turn[] turns;
+	[HideInInspector]
 	public Item[] items;
 
-	public void Reset ()
+	public void Awake ()
 	{
 		turns = GetComponentsInChildren<Turn> ();
 		items = GetComponentsInChildren<Item> (); 
 	}
 
-	public void OnEnable() {
-		Reset ();
-	}
 }

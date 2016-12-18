@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Turn : MonoBehaviour
 {
+	[HideInInspector]
 	public Enemy[] enemies;
 
-	public void Reset() {
+	public void Awake() {
 		enemies = GetComponentsInChildren<Enemy>();
 	}
 		
-	public void OnEnable() {
-		Reset ();
-	}
 }

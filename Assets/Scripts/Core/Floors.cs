@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class Floors : MonoBehaviour
 {
+	[HideInInspector]
 	public Floor[] floors;
 
-	public void Reset ()
+	public void Awake ()
 	{
 		floors = GetComponentsInChildren<Floor> ();
 	}
 
-	public void OnEnable() {
-		Reset ();
-	}
 }

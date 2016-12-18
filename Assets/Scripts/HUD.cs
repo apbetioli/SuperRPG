@@ -5,10 +5,10 @@ public class HUD : MonoBehaviour
 {
 	public Text health;
     public Text coins;
-    public Text damage;
-    public Text defense;
 	public Text weapon;
+	public Image weaponImage;
 	public Text shield;
+	public Image shieldImage;
 	public Text floor;
 	
 	private Player player;
@@ -22,12 +22,15 @@ public class HUD : MonoBehaviour
 
     public void OnGUI()
     {
-		coins.text = "Coins: " + player.coins;
-		damage.text = "Damage: " + player.damage;
-        defense.text = "Defense: " + player.defense;
-		weapon.text = "Weapon: " + player.weapon.name;
-		shield.text = "Shield: " + player.shield.name;
 		health.text = "Health: " + player.health + "/" + player.maxHealth;
-		floor.text = "Floor: " + gameManager.CurrentFloor.name;
+		coins.text = "Coins: $" + player.coins;
+
+		weapon.text = player.weapon.name + " (" + player.damage + ")";
+		weaponImage.sprite = player.weapon.sprite;
+
+		shield.text = player.shield.name + " (" + player.defense + ")";
+		shieldImage.sprite = player.shield.sprite;
+
+		floor.text = gameManager.CurrentFloor.name;
     }
 }

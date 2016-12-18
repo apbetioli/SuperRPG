@@ -26,7 +26,7 @@ public class Shop : MonoBehaviour
 			Item item = items [i];
 
 			GameObject bat = GameObject.Instantiate (buttonAndTextPrefab);
-			bat.GetComponentInChildren<Text>().text = item.name + " (" + item.price + ")";
+			bat.GetComponentInChildren<Text>().text = item.name + " $" + item.price + "";
 			bat.GetComponentInChildren<Equip> ().item = item;
 			if(item.sprite)
 				bat.GetComponentInChildren<Image> ().sprite = item.sprite;
