@@ -1,86 +1,89 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class BattleManager : MonoBehaviour
 {
-    public Enemy[] enemies;
     public float waitTime = 0f;
 
-    private Queue<Enemy> enemiesQueue = new Queue<Enemy>();
     [HideInInspector]
-    public Enemy currentEnemy;
-    private bool winner = false;
+	public Enemy currentEnemy;
+
+	private Turn[] turns;
+	private int currentTurnIndex = 0;
 
     private Player player;
+	private GameManager gameManager;
 
     void Awake()
     {
-        player = FindObjectOfType<Player>();
-        if (player == null)
-        {
-            Debug.LogError("Player not found");
-            this.enabled = false;
-        }
-
-        foreach (Enemy enemy in enemies)
-            enemiesQueue.Enqueue(enemy);
-    }
-
-    internal void NextFloor()
-    {
-		
+		gameManager = GameManager.Instance;
+		if(gameManager != null)
+			player = Player.Instance;
     }
 
     void Start()
     {
-        currentEnemy = enemiesQueue.Dequeue();
+		turns = gameManager.CurrentFloor.turns; 
+		NextEnemy ();
     }
 
-    internal void GameOver()
+	public void Attack()
     {
-		player.Reborn();
-    }
+		currentEnemy.TakeDamage(player.damage);
 
-    public void Attack()
-    {
+		if(currentEnemy.IsDead()) {
+
+			player.coins += currentEnemy.coins;
+
+			if (currentTurnIndex == turns.Length) 
+				NextFloor ();
+			else
+				NextEnemy ();
+			return;
+		}
+
         StartCoroutine(CoolDown());
     }
 
-    public bool PlayerWin()
-    {
-        return winner;
-    }
+	IEnumerator CoolDown()
+	{
+		yield return new WaitForSeconds(waitTime);
+		player.TakeDamage(currentEnemy.damage);
 
-    public bool PlayerDead()
-    {
-        winner = false;
-        return player.IsDead();
-    }
+		if (player.IsDead())
+			GameManager.GameOver ();
+	}
 
-    IEnumerator CoolDown()
-    {
-        currentEnemy.TakeDamage(player.damage);
+	public void NextFloor()
+	{
+		gameManager.NextFloor ();
+	}
 
-        if (enemiesQueue.Count == 0 && currentEnemy.IsDead())
-        {
-            winner = true;
-            yield break;
-        }
+	private void NextEnemy() {
+		Turn currentTurn = turns[currentTurnIndex];
 
-        if (enemiesQueue.Count > 0 && currentEnemy.IsDead())
-        {
-            currentEnemy = enemiesQueue.Dequeue();
-            yield break;
-        }
+		float rand = Random.Range (0f, 100f) / 100f;
 
-        yield return new WaitForSeconds(waitTime);
+		Enemy chosen = currentTurn.enemies [0];
+		float sum = 0f;
+		foreach (Enemy enemy in currentTurn.enemies) {
+			sum += enemy.probability;
+			chosen = enemy;
+			if (rand < sum) {
+				break;
+			}
+		}
 
-        player.TakeDamage(currentEnemy.damage);
-    }
+		Debug.Log ("Chose enemy: " + chosen);
+		Debug.Log ("Rand: " + rand + " Probability: " + chosen.probability);
 
-    public void Run()
-    {
-    }
+		currentEnemy = chosen;
+
+		currentTurnIndex++;
+	}
+
+	public string GetTurnDescription() {
+		return "Turn " + currentTurnIndex + "/" + turns.Length;
+	}
 }

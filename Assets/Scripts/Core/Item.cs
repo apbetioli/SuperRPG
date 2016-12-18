@@ -12,4 +12,6 @@ public class Item : MonoBehaviour {
 	/* Quantidade que irá aumentar a max health */
 	public int maxHp;
 
+	public Sprite sprite;
+
 }

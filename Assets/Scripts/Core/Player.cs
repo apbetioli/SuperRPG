@@ -28,13 +28,16 @@ public class Player : MonoBehaviour
 		get { return weapon.damage; }
 	}
 
-	public void Reborn()
+	public static Player Instance 
 	{
-		health = 10;
-		maxHealth = 10;
-		coins = 15;
+		get {
+			Player player = FindObjectOfType<Player> ();
+			if (player == null)
+				Debug.LogError ("Player not found");
+			return player;
+		}
 	}
-    
+
 	public void TakeDamage(int damage)
     {
         health -= damage;
@@ -45,4 +48,36 @@ public class Player : MonoBehaviour
         return health <= 0;
     }
 
+	public void DoEquip (Item item)
+	{
+		if (item.price > coins) {
+			Debug.Log("Not enough money");
+			return;
+		}
+
+		if (weapon == item) {
+			Debug.Log("Already have weapon");
+			return;
+		}
+
+		if (shield == item) {
+			Debug.Log("Already have shield");
+			return;
+		}
+
+		if (item.hp > 0 && health == maxHealth) {
+			Debug.Log("Too much health");
+			return;
+		}
+
+		health += item.hp;
+		maxHealth += item.maxHp;
+		coins -= item.price;
+
+		if (item.GetType () == typeof(Weapon))
+			weapon = item as Weapon;
+
+		if (item.GetType () == typeof(Shield))
+			shield = item as Shield;
+	}
 }
