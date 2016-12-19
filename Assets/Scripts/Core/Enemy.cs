@@ -15,8 +15,11 @@ public class Enemy : MonoBehaviour
 	private int _health;
 
 	public int damage { get; set; }
+
 	public int defense { get; set; }
+
 	public int coins { get; set; }
+
 	public int health { 
 		get { return _health; } 
 		set { _health = Mathf.Max (value, 0); } 
@@ -24,15 +27,15 @@ public class Enemy : MonoBehaviour
 
 	public void Start ()
 	{
-		damage = Random.Range (damageMin, damageMax+1);
-		defense = Random.Range (defenseMin, defenseMax+1);
-		coins = Random.Range (coinsMin, coinsMax);
-		health = Random.Range (healthMin, healthMax);
+		damage = Random.Range (damageMin, damageMax + 1);
+		defense = Random.Range (defenseMin, defenseMax + 1);
+		coins = Random.Range (coinsMin, coinsMax + 1);
+		health = Random.Range (healthMin, healthMax + 1);
 	}
 
 	public void TakeDamage (int damage)
 	{
-		health -= damage;
+		health = Mathf.Min (health, health - damage + defense);
 	}
 
 	public bool IsDead ()

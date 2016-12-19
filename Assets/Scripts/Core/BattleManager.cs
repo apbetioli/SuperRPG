@@ -4,64 +4,65 @@ using System.Collections.Generic;
 
 public class BattleManager : MonoBehaviour
 {
-    public float waitTime = 0f;
+	public float waitTime = 0f;
 
-    [HideInInspector]
+	[HideInInspector]
 	public Enemy currentEnemy;
 
 	private Turn[] turns;
 	private int currentTurnIndex = 0;
 
-    private Player player;
+	private Player player;
 	private GameManager gameManager;
 
-    void Awake()
-    {
+	void Awake ()
+	{
 		gameManager = GameManager.Instance;
-		if(gameManager != null)
+		if (gameManager != null)
 			player = Player.Instance;
-    }
+	}
 
-    void Start()
-    {
+	void Start ()
+	{
 		turns = gameManager.CurrentFloor.turns; 
 		NextEnemy ();
-    }
+	}
 
-	public void Attack()
-    {
-		currentEnemy.TakeDamage(player.damage);
+	public void Attack ()
+	{
+		currentEnemy.TakeDamage (player.damage);
 
-		if(currentEnemy.IsDead()) {
+		if (currentEnemy.IsDead ()) {
 
 			player.coins += currentEnemy.coins;
 
-			if (currentTurnIndex == turns.Length) 
+			if (currentTurnIndex == turns.Length)
 				NextFloor ();
 			else
 				NextEnemy ();
 			return;
 		}
 
-        StartCoroutine(CoolDown());
-    }
+		StartCoroutine (CoolDown ());
+	}
 
-	IEnumerator CoolDown()
+	IEnumerator CoolDown ()
 	{
-		yield return new WaitForSeconds(waitTime);
-		player.TakeDamage(currentEnemy.damage);
+		yield return new WaitForSeconds (waitTime);
+		player.TakeDamage (currentEnemy.damage);
 
-		if (player.IsDead())
+		if (player.IsDead ())
 			GameManager.GameOver ();
 	}
 
-	public void NextFloor()
+	public void NextFloor ()
 	{
 		gameManager.NextFloor ();
 	}
 
-	private void NextEnemy() {
-		Turn currentTurn = turns[currentTurnIndex];
+	private void NextEnemy ()
+	{
+		Turn currentTurn = turns [currentTurnIndex];
 
 		float rand = Random.Range (0f, 100f) / 100f;
 
@@ -83,7 +84,8 @@ public class BattleManager : MonoBehaviour
 		currentTurnIndex++;
 	}
 
-	public string GetTurnDescription() {
+	public string GetTurnDescription ()
+	{
 		return "Turn " + currentTurnIndex + "/" + turns.Length;
 	}
 }

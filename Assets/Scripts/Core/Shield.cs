@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
-public class Shield : Item {
+public class Shield : Item
+{
 
 }

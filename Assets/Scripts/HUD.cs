@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
 	public Text health;
-    public Text coins;
+	public Text coins;
 	public Text weapon;
 	public Image weaponImage;
 	public Text shield;
@@ -14,14 +14,14 @@ public class HUD : MonoBehaviour
 	private Player player;
 	private GameManager gameManager;
 
-    void Awake()
-    {
+	void Awake ()
+	{
 		gameManager = GameManager.Instance;
 		player = Player.Instance;
-    }
+	}
 
-    public void OnGUI()
-    {
+	public void OnGUI ()
+	{
 		health.text = "Health: " + player.health + "/" + player.maxHealth;
 		coins.text = "Coins: $" + player.coins;
 
@@ -32,5 +32,5 @@ public class HUD : MonoBehaviour
 		shieldImage.sprite = player.shield.sprite;
 
 		floor.text = gameManager.CurrentFloor.name;
-    }
+	}
 }

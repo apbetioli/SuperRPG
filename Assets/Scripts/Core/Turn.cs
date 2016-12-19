@@ -10,5 +10,4 @@ public class Turn : MonoBehaviour
 	public void Awake() {
 		enemies = GetComponentsInChildren<Enemy>();
 	}
-		
 }

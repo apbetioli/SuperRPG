@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
 	private int floor = 0;
 
@@ -12,13 +13,14 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance {
 		get {
 			GameManager gameManager = FindObjectOfType<GameManager> ();
-			if (gameManager == null) 
-				Load();
+			if (gameManager == null)
+				Load ();
 			return gameManager;
 		}
 	}
 
-	public void Awake() {
+	public void Awake ()
+	{
 		floors = FindObjectOfType<Floors> ();
 	}
 
@@ -26,36 +28,46 @@ public class GameManager : MonoBehaviour {
 		get { return floors.floors [floor]; }
 	}
 
-	public void NextFloor() {
-		if (floor+1 == floors.floors.Length) {
-			GameWon();
+	public void NextFloor ()
+	{
+		if (floor + 1 == floors.floors.Length) {
+			GameWon ();
 		} else {
 			floor++;
-			Shop();
+			Shop ();
 		}
 	}
 
-	public static void GameOver() {
+	public static void GameOver ()
+	{
 		SceneManager.LoadScene ("GameOver");
+		HUD ();
 	}
 
-	public static void GameWon() {
+	public static void GameWon ()
+	{
 		SceneManager.LoadScene ("GameWon");
 	}
 
-	public static void Shop() {
+	public static void Shop ()
+	{
 		SceneManager.LoadScene ("Shop");
+		HUD ();
 	}
 
-	public static void Load() {
+	public static void Load ()
+	{
 		SceneManager.LoadScene ("Load");
 	}
 
-	public static void HUD() {
-		SceneManager.LoadSceneAsync("HUD", LoadSceneMode.Additive);
+	public static void HUD ()
+	{
+		SceneManager.LoadSceneAsync ("HUD", LoadSceneMode.Additive);
 	}
 
-	public static void Battle() {
-		SceneManager.LoadScene("Battle");
+	public static void Battle ()
+	{
+		SceneManager.LoadScene ("Battle");
+		HUD ();
 	}
 }

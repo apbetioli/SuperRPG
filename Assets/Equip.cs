@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equip : MonoBehaviour {
-
+public class Equip : MonoBehaviour
+{
 	public Item item;
 
 	private Player player;
 
-	void Awake()
+	void Awake ()
 	{
 		player = Player.Instance;
 	}
 
-	public void DoEquip () {
-		if(item == null) {
-			Debug.LogError("No item set to equip");
+	public void DoEquip ()
+	{
+		if (item == null) {
+			Debug.LogError ("No item set to equip");
 			return;
 		}
 

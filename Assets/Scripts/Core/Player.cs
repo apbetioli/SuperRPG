@@ -12,24 +12,20 @@ public class Player : MonoBehaviour
     
 	private int _health = 10;
 
-	public int health
-    {
-        get { return _health; }
-        set { _health = Mathf.Clamp(value, 0, maxHealth); }
-    }
+	public int health {
+		get { return _health; }
+		set { _health = Mathf.Clamp (value, 0, maxHealth); }
+	}
 
-	public int defense
-	{
+	public int defense {
 		get { return shield.defense; }
 	}
 
-	public int damage
-	{
+	public int damage {
 		get { return weapon.damage; }
 	}
 
-	public static Player Instance 
-	{
+	public static Player Instance {
 		get {
 			Player player = FindObjectOfType<Player> ();
 			if (player == null)
@@ -38,40 +34,42 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	public void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
+	public void TakeDamage (int damage)
+	{
+		health = Mathf.Min (health, health - damage + defense);
+	}
 
-    public bool IsDead()
-    {
-        return health <= 0;
-    }
+	public bool IsDead ()
+	{
+		return health <= 0;
+	}
 
 	public void DoEquip (Item item)
 	{
 		if (item.price > coins) {
-			Debug.Log("Not enough money");
+			Debug.Log ("Not enough money");
 			return;
 		}
 
 		if (weapon == item) {
-			Debug.Log("Already have weapon");
+			Debug.Log ("Already have weapon");
 			return;
 		}
 
 		if (shield == item) {
-			Debug.Log("Already have shield");
+			Debug.Log ("Already have shield");
 			return;
 		}
 
+		maxHealth += item.maxHp;
+
 		if (item.hp > 0 && health == maxHealth) {
-			Debug.Log("Too much health");
+			Debug.Log ("Too much health");
 			return;
 		}
 
 		health += item.hp;
-		maxHealth += item.maxHp;
+
 		coins -= item.price;
 
 		if (item.GetType () == typeof(Weapon))

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
-
+public class Item : MonoBehaviour
+{
 	public int damage;
 	public int defense;
 	public int price;
@@ -13,5 +13,4 @@ public class Item : MonoBehaviour {
 	public int maxHp;
 
 	public Sprite sprite;
-
 }

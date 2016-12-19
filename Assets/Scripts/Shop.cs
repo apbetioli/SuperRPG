@@ -8,40 +8,37 @@ public class Shop : MonoBehaviour
 	private Canvas canvas;
 	private GameManager gameManager;
 
-    void Awake()
+	void Awake ()
 	{
 		gameManager = GameManager.Instance;
 		canvas = FindObjectOfType<Canvas> ();
 	}
 
-	void Start() {
-		LoadScenes ();
+	void Start ()
+	{
 		CreateItems ();
 	}
 
-	private void CreateItems() {
+	private void CreateItems ()
+	{
 		Floor floor = gameManager.CurrentFloor;
 		Item[] items = floor.items;
 		for (int i = 0; i < items.Length; i++) {
 			Item item = items [i];
 
 			GameObject bat = GameObject.Instantiate (buttonAndTextPrefab);
-			bat.GetComponentInChildren<Text>().text = item.name + " $" + item.price + "";
+			bat.GetComponentInChildren<Text> ().text = item.name + " $" + item.price + "";
 			bat.GetComponentInChildren<Equip> ().item = item;
-			if(item.sprite)
+			if (item.sprite)
 				bat.GetComponentInChildren<Image> ().sprite = item.sprite;
-			bat.transform.SetParent(canvas.transform);
-			bat.transform.localPosition = new Vector3(250, 200-i*150, 0);
+			bat.transform.SetParent (canvas.transform);
+			bat.transform.localPosition = new Vector3 (250, 200 - i * 150, 0);
 		}
 	}
 
-	private void LoadScenes() {
-		GameManager.HUD ();
-    }
-
-    public void LoadBasement()
-    {
+	public void Battle ()
+	{
 		GameManager.Battle ();
-    }
+	}
 
 }
