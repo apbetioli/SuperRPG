@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -38,10 +39,27 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public static void GameOver ()
+	public static void GameOver (Enemy enemy)
 	{
+		Player player = Player.Instance;
+
+		Analytics.CustomEvent ("GameOver", new Dictionary<string, object> {
+			{ "floor", Instance.floor },
+			{ "coins", player.coins },
+			{ "weapon", player.weapon.name },
+			{ "shield", player.shield.name },
+			{ "health", player.health },
+			{ "maxHealth", player.maxHealth },
+			{ "enemy", enemy.name }
+		});
+
 		SceneManager.LoadScene ("GameOver");
 		HUD ();
+	}
+
+	public static void Run() 
+	{
+		SceneManager.LoadScene ("GameOver");
 	}
 
 	public static void GameWon ()

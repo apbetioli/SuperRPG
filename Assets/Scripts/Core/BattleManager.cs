@@ -52,7 +52,7 @@ public class BattleManager : MonoBehaviour
 		player.TakeDamage (currentEnemy.damage);
 
 		if (player.IsDead ())
-			GameManager.GameOver ();
+			GameManager.GameOver (currentEnemy);
 	}
 
 	public void NextFloor ()

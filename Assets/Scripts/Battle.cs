@@ -32,6 +32,6 @@ public class Battle : MonoBehaviour
 
 	public void Run ()
 	{
-		GameManager.GameOver ();
+		GameManager.Run ();
 	}
 }
