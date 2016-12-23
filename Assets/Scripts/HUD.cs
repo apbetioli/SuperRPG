@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
 	public Text health;
@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
 	public Text shield;
 	public Image shieldImage;
 	public Text floor;
+	public Slider healthBar;
 	
 	private Player player;
 	private GameManager gameManager;
@@ -20,17 +21,28 @@ public class HUD : MonoBehaviour
 		player = Player.Instance;
 	}
 
+	void Start(){
+		healthBar.value = CalculateHealth();
+	}
+
+	void Update(){
+		healthBar.value = CalculateHealth();
+	}
+
 	public void OnGUI ()
 	{
-		health.text = "Health: " + player.health + "/" + player.maxHealth;
-		coins.text = "Coins: $" + player.coins;
-
-		weapon.text = player.weapon.name + " (" + player.damage + ")";
+		weapon.text =player.damage.ToString();
 		weaponImage.sprite = player.weapon.sprite;
 
-		shield.text = player.shield.name + " (" + player.defense + ")";
+		shield.text = player.defense.ToString();
 		shieldImage.sprite = player.shield.sprite;
 
+		coins.text = player.coins.ToString();
+
 		floor.text = gameManager.CurrentFloor.name;
+	}
+
+	float CalculateHealth(){
+		return  ((float)player.health) / ((float)player.maxHealth);
 	}
 }
