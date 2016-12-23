@@ -36,6 +36,8 @@ public class BattleManager : MonoBehaviour
 
 			player.coins += currentEnemy.coins;
 
+			Destroy (currentEnemy.gameObject);
+
 			if (currentTurnIndex == turns.Length)
 				NextFloor ();
 			else
@@ -82,6 +84,8 @@ public class BattleManager : MonoBehaviour
 		currentEnemy = chosen;
 
 		currentTurnIndex++;
+
+		currentEnemy.InstantiateModel ();
 	}
 
 	public string GetTurnDescription ()
