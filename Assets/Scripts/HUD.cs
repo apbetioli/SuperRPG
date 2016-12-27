@@ -33,6 +33,8 @@ public class HUD : MonoBehaviour
 
 	public void OnGUI ()
 	{
+		health.text = player.health.ToString() + "/"+ player.maxHealth.ToString();
+
 		weapon.text = player.damage.ToString ();
 		weaponImage.sprite = player.weapon.sprite;
 
