@@ -21,8 +21,7 @@ public class Load : MonoBehaviour
 	}
 
 	void Start ()
-	{  
-		Screen.orientation = ScreenOrientation.Portrait;    
+	{     
 		GameManager.Shop ();
 	}
 

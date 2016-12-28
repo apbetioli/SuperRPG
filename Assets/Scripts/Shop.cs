@@ -32,7 +32,7 @@ public class Shop : MonoBehaviour
 			if (item.sprite)
 				bat.GetComponentInChildren<Image> ().sprite = item.sprite;
 			bat.transform.SetParent (canvas.transform);
-			bat.transform.localPosition = new Vector3 (-300,-(150 *i), 0);
+			bat.transform.localPosition = new Vector3 (-300,-(100 *i), 0);
 		}
 	}
 
