@@ -3,42 +3,44 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-	public GameObject buttonAndTextPrefab;
+    public GameObject prefab;
+    public Button[] buttons;
 
-	private Canvas canvas;
-	private GameManager gameManager;
+    private Canvas canvas;
+    private GameManager gameManager;
 
-	void Awake ()
-	{
-		gameManager = GameManager.Instance;
-		canvas = FindObjectOfType<Canvas> ();
-	}
 
-	void Start ()
-	{
-		CreateItems ();
-	}
+    void Awake()
+    {
+        gameManager = GameManager.Instance;
+        canvas = FindObjectOfType<Canvas>();
+    }
 
-	private void CreateItems ()
-	{
-		Floor floor = gameManager.CurrentFloor;
-		Item[] items = floor.items;
-		for (int i = 0; i < items.Length; i++) {
-			Item item = items [i];
+    void Start()
+    {
+        CreateItems();
+    }
 
-			GameObject bat = GameObject.Instantiate (buttonAndTextPrefab);
-			bat.GetComponentInChildren<Text> ().text = item.name + " $" + item.price + "";
-			bat.GetComponentInChildren<Equip> ().item = item;
-			if (item.sprite)
-				bat.GetComponentInChildren<Image> ().sprite = item.sprite;
-			bat.transform.SetParent (canvas.transform);
-			bat.transform.localPosition = new Vector3 (-300,-(100 *i), 0);
-		}
-	}
+    private void CreateItems()
+    {
+        Floor floor = gameManager.CurrentFloor;
+        Item[] items = floor.items;
+        for (int i = 0; i < items.Length; i++)
+        {
+            Item item = items[i];
+            Button button = buttons[i];
+           button.GetComponentsInChildren<Text>()[0].text = item.Stats();
+           button.GetComponentsInChildren<Text>()[1].text = item.price.ToString();
+            button.GetComponentInChildren<Equip>().item = item;
+            if (item.sprite)
+                button.GetComponentInChildren<Image>().sprite = item.sprite;
+            button.transform.parent.gameObject.SetActive(true);
+        }
+    }
 
-	public void Battle ()
-	{
-		GameManager.Battle ();
-	}
+    public void Battle()
+    {
+        GameManager.Battle();
+    }
 
 }
