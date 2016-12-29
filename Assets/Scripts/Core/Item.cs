@@ -19,6 +19,9 @@ public class Item : MonoBehaviour
     {
         if (damage > 0)
             return damage.ToString();
-        return defense.ToString();
+        if (defense > 0)
+            return defense.ToString();
+
+        return hp.ToString();
     }
 }
