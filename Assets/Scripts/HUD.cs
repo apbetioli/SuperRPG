@@ -3,51 +3,51 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-	public Text health;
-	public Text coins;
-	public Text weapon;
-	public Image weaponImage;
-	public Text shield;
-	public Image shieldImage;
-	public Text floor;
-	public Slider healthBar;
-	
-	private Player player;
-	private GameManager gameManager;
+    public Text health;
+    public Text coins;
+    public Text weapon;
+    public Image weaponImage;
+    public Text shield;
+    public Image shieldImage;
+    public Text floor;
+    public Slider healthBar;
 
-	void Awake ()
-	{
-		gameManager = GameManager.Instance;
-		player = Player.Instance;
-	}
+    private Player player;
+    private GameManager gameManager;
 
-	void Start ()
-	{
-		healthBar.value = CalculateHealth ();
-	}
+    void Awake()
+    {
+        gameManager = GameManager.Instance;
+        player = Player.Instance;
+    }
 
-	void Update ()
-	{
-		healthBar.value = CalculateHealth ();
-	}
+    void Start()
+    {
+        healthBar.value = CalculateHealth();
+    }
 
-	public void OnGUI ()
-	{
-		health.text = player.health.ToString() + "/"+ player.maxHealth.ToString();
+    void Update()
+    {
+        healthBar.value = CalculateHealth();
+    }
 
-		weapon.text = player.damage.ToString ();
-		weaponImage.sprite = player.weapon.sprite;
+    public void OnGUI()
+    {
+        health.text = player.health.ToString() + "/" + player.maxHealth.ToString();
 
-		shield.text = player.defense.ToString ();
-		shieldImage.sprite = player.shield.sprite;
+        weapon.text = player.damage.ToString();
+        weaponImage.sprite = player.weapon.sprite;
 
-		coins.text = player.coins.ToString ();
+        shield.text = player.defense.ToString();
+        shieldImage.sprite = player.shield.sprite;
 
-		floor.text = gameManager.CurrentFloor.name;
-	}
+        coins.text = player.coins.ToString();
 
-	float CalculateHealth ()
-	{
-		return  ((float)player.health) / ((float)player.maxHealth);
-	}
+        floor.text = gameManager.CurrentFloor.name;
+    }
+
+    float CalculateHealth()
+    {
+        return ((float)player.health) / ((float)player.maxHealth);
+    }
 }

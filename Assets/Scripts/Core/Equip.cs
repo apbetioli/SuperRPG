@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Equip : MonoBehaviour
 {
-	public Item item;
+    public Item item;
 
-	private Player player;
+    private Player player;
 
-	void Awake ()
-	{
-		player = Player.Instance;
-	}
+    void Awake()
+    {
+        player = Player.Instance;
+    }
 
-	public void DoEquip ()
-	{
-		if (item == null) {
-			Debug.LogError ("No item set to equip");
-			return;
-		}
-
-		player.DoEquip (item);
-	}
+    public void DoEquip()
+    {
+        if (item == null)
+        {
+            Debug.LogError("No item set to equip");
+            return;
+        }
+        player.DoEquip(item);
+    }
 }
