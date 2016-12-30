@@ -19,6 +19,6 @@ public class FloatingText : MonoBehaviour
 
     public void SetText(string text)
     {
-        this.text.text = "-" + text;
+        this.text.text = text;
     }
 }
