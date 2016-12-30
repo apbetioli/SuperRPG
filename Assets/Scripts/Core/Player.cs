@@ -57,13 +57,13 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (weapon == item)
+		if (weapon.name.Equals(item.name))
         {
             Debug.Log("Already have weapon");
             return;
         }
 
-        if (shield == item)
+		if (shield.name.Equals(item.name))
         {
             Debug.Log("Already have shield");
             return;

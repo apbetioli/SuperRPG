@@ -18,6 +18,11 @@ public class Battle : MonoBehaviour
 		manager = FindObjectOfType<BattleManager> ();
 	}
 
+	void Update() {
+		if(Input.GetMouseButtonDown(0))
+			Attack ();
+	}
+
 	void OnGUI ()
 	{
 		if (manager.currentEnemy != null) {
