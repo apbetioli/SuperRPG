@@ -31,6 +31,7 @@ public class Shop : MonoBehaviour
             Item item = items[i];
             Button button = buttons[i];
            button.GetComponentsInChildren<Text>()[0].text = item.Stats();
+           button.GetComponentsInChildren<Text>()[0].color = item.colorText;
            button.GetComponentsInChildren<Text>()[1].text = item.price.ToString();
             button.GetComponentInChildren<Equip>().item = item;
             if (item.sprite)

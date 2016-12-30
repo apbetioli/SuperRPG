@@ -13,15 +13,23 @@ public class Item : MonoBehaviour
     public int maxHp;
 
     public Sprite sprite;
+    public Color colorText;
 
 
     public string Stats()
     {
-        if (damage > 0)
-            return damage.ToString();
-        if (defense > 0)
-            return defense.ToString();
 
+        if (damage > 0)
+        {
+            ColorUtility.TryParseHtmlString("#FF2626FF", out colorText);
+            return damage.ToString();
+        }
+        if (defense > 0)
+        {
+            ColorUtility.TryParseHtmlString("#00CC45FF", out colorText);
+            return defense.ToString();
+        }
+        ColorUtility.TryParseHtmlString("#FFFFFFFF", out colorText);
         return hp.ToString();
     }
 }
