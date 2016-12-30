@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 	public GameObject modelPrefab;
 
 	private int _health;
+	[HideInInspector]
+	public int maxHealth;
 
 	public int damage { get; set; }
 
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
 		defense = Random.Range (defenseMin, defenseMax + 1);
 		coins = Random.Range (coinsMin, coinsMax + 1);
 		health = Random.Range (healthMin, healthMax + 1);
+		maxHealth = health;
 	}
 
 	public void TakeDamage (int damage)

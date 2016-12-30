@@ -58,14 +58,14 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (weapon == item)
+		if (weapon.name.Equals(item.name))
         {
             Debug.Log("Already have weapon");
             FloatingTextController.CreateFloatingText2("Already have weapon", item.transform);
             return;
         }
 
-        if (shield == item)
+		if (shield.name.Equals(item.name))
         {
             Debug.Log("Already have shield");
             FloatingTextController.CreateFloatingText2("Already have shield", item.transform);
