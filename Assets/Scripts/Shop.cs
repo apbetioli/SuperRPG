@@ -18,6 +18,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
+        FloatingTextController.Initilize();
         CreateItems();
     }
 

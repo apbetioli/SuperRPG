@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
 		health += item.hp;
 
 		coins -= item.price;
+		
+		FloatingTextController.CreateFloatingText(item.price.ToString(), item.transform);
 
 		if (item.GetType () == typeof(Weapon))
 			weapon = item as Weapon;
