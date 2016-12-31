@@ -78,9 +78,6 @@ public class BattleManager : MonoBehaviour
 			}
 		}
 
-		Debug.Log ("Chose enemy: " + chosen);
-		Debug.Log ("Rand: " + rand + " Probability: " + chosen.probability);
-
 		currentEnemy = chosen;
 
 		currentTurnIndex++;

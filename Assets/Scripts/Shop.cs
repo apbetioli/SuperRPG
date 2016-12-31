@@ -6,14 +6,11 @@ public class Shop : MonoBehaviour
     public GameObject prefab;
     public Button[] buttons;
 
-    private Canvas canvas;
     private GameManager gameManager;
-
 
     void Awake()
     {
         gameManager = GameManager.Instance;
-        canvas = FindObjectOfType<Canvas>();
     }
 
     void Start()

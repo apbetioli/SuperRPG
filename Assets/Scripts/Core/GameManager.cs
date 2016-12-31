@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
 	{
 		Player player = Player.Instance;
 
+		Analytics.CustomEvent ("DeathInFloor", new Dictionary<string, object> {
+			{ "floor", Instance.floor }
+		});
+		/*
 		Analytics.CustomEvent ("GameOver", new Dictionary<string, object> {
 			{ "floor", Instance.floor },
 			{ "coins", player.coins },
@@ -52,9 +56,8 @@ public class GameManager : MonoBehaviour
 			{ "maxHealth", player.maxHealth },
 			{ "enemy", enemy.name }
 		});
-
+		*/
 		SceneManager.LoadScene ("GameOver");
-		HUD ();
 	}
 
 	public static void Run() 

@@ -1,14 +1,19 @@
 fileFormatVersion: 2
 guid: 7d88484704ae23b42b4237309a92cf7d
 TrueTypeFontImporter:
-  serializedVersion: 2
-  fontSize: 60
+  serializedVersion: 4
+  fontSize: 30
   forceTextureCase: 1
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
+  fontName: Sector 034
+  fontNames:
+  - Sector 034
+  fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
