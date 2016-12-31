@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 		Analytics.CustomEvent ("DeathInFloor", new Dictionary<string, object> {
 			{ "floor", Instance.floor }
 		});
-		/*
+
 		Analytics.CustomEvent ("GameOver", new Dictionary<string, object> {
 			{ "floor", Instance.floor },
 			{ "coins", player.coins },
@@ -56,18 +56,18 @@ public class GameManager : MonoBehaviour
 			{ "maxHealth", player.maxHealth },
 			{ "enemy", enemy.name }
 		});
-		*/
-		SceneManager.LoadScene ("GameOver");
+
+		GameOver ();
 	}
 
-	public static void Run() 
+	public static void GameOver() 
 	{
-		SceneManager.LoadScene ("GameOver");
+		SceneManager.LoadScene ("GameOver", LoadSceneMode.Additive);
 	}
 
 	public static void GameWon ()
 	{
-		SceneManager.LoadScene ("GameWon");
+		SceneManager.LoadScene ("GameWon", LoadSceneMode.Additive);
 	}
 
 	public static void Shop ()

@@ -44,7 +44,7 @@ public class Battle : MonoBehaviour
 
 	public void Run ()
 	{
-		GameManager.Run ();
+		GameManager.GameOver ();
 	}
 
 	private float CalculateHealth ()

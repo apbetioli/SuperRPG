@@ -30,6 +30,9 @@ public class BattleManager : MonoBehaviour
 
 	public void Attack ()
 	{
+		if (player.IsDead ())
+			return;
+		
 		currentEnemy.TakeDamage (player.damage);
 
 		if (currentEnemy.IsDead ()) {

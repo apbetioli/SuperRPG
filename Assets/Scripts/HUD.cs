@@ -43,7 +43,8 @@ public class HUD : MonoBehaviour
 
         coins.text = player.coins.ToString();
 
-        floor.text = gameManager.CurrentFloor.name;
+		if(gameManager.CurrentFloor != null)
+        	floor.text = gameManager.CurrentFloor.name;
     }
 
     float CalculateHealth()
