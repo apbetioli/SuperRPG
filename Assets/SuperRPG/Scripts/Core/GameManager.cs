@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public static void GameOver (Enemy enemy)
+	public static void Run (Enemy enemy)
 	{
 		/*
 		Player player = Player.Instance;
@@ -63,12 +63,12 @@ public class GameManager : MonoBehaviour
 
 		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Fail, "floor " + Instance.floor, enemy.name);
 
-		GameOver ();
+		SceneManager.LoadScene ("GameOver", LoadSceneMode.Additive);
 	}
 
-	public static void GameOver() 
+	public static void Run ()
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Fail, "floor " + Instance.floor);
+		GameAnalytics.NewDesignEvent ("Run");
 
 		SceneManager.LoadScene ("GameOver", LoadSceneMode.Additive);
 	}

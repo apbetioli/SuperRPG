@@ -18,8 +18,9 @@ public class Battle : MonoBehaviour
 		manager = FindObjectOfType<BattleManager> ();
 	}
 
-	void Update() {
-		if(Input.GetMouseButtonDown(0))
+	void Update ()
+	{
+		if (Input.GetMouseButtonDown (0))
 			Attack ();
 	}
 
@@ -27,10 +28,10 @@ public class Battle : MonoBehaviour
 	{
 		if (manager.currentEnemy != null) {
 			currentEnemyText.text = manager.currentEnemy.name;
-			damageText.text = manager.currentEnemy.damage.ToString();
-			defenseText.text = manager.currentEnemy.defense.ToString();
-			coinsText.text = manager.currentEnemy.coins.ToString();
-			healthText.text = manager.currentEnemy.health.ToString() + "/" + manager.currentEnemy.maxHealth.ToString();
+			damageText.text = manager.currentEnemy.damage.ToString ();
+			defenseText.text = manager.currentEnemy.defense.ToString ();
+			coinsText.text = manager.currentEnemy.coins.ToString ();
+			healthText.text = manager.currentEnemy.health.ToString () + "/" + manager.currentEnemy.maxHealth.ToString ();
 			healthBar.value = CalculateHealth ();
 		}
 
@@ -44,7 +45,7 @@ public class Battle : MonoBehaviour
 
 	public void Run ()
 	{
-		GameManager.GameOver ();
+		GameManager.Run ();
 	}
 
 	private float CalculateHealth ()

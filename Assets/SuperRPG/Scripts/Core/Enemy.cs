@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
 		set { _health = Mathf.Max (value, 0); } 
 	}
 
+	private bool modelInstantiated;
+
 	public void Start ()
 	{
 		damage = Random.Range (damageMin, damageMax + 1);
@@ -48,13 +50,14 @@ public class Enemy : MonoBehaviour
 		return health <= 0;
 	}
 
-	public void InstantiateModel() 
+	public void InstantiateModel ()
 	{
-		if (modelPrefab != null) {
+		if (modelPrefab != null && !modelInstantiated) {
 			GameObject instance = GameObject.Instantiate (modelPrefab);
 			instance.transform.SetParent (transform);
 			instance.transform.localRotation = Quaternion.Euler (new Vector3 (90, 0, 0));
 			instance.transform.localScale = new Vector3 (20, 20, 20);
+			modelInstantiated = true;
 		}
 	}
 
