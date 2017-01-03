@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
 		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "floor " + Instance.floor);
 
 		SceneManager.LoadScene ("Battle");
+		SceneManager.LoadScene ("BattleHUD", LoadSceneMode.Additive);
 		HUD ();
 	}
 }

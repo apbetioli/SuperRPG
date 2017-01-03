@@ -28,6 +28,12 @@ public class BattleManager : MonoBehaviour
 		NextEnemy ();
 	}
 
+	void Update ()
+	{
+		if (Input.GetMouseButtonDown (0))
+			Attack ();
+	}
+
 	public void Attack ()
 	{
 		if (player.IsDead ())

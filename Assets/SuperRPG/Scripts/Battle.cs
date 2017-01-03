@@ -18,12 +18,6 @@ public class Battle : MonoBehaviour
 		manager = FindObjectOfType<BattleManager> ();
 	}
 
-	void Update ()
-	{
-		if (Input.GetMouseButtonDown (0))
-			Attack ();
-	}
-
 	void OnGUI ()
 	{
 		if (manager.currentEnemy != null) {
@@ -36,11 +30,6 @@ public class Battle : MonoBehaviour
 		}
 
 		turnText.text = manager.GetTurnDescription ();
-	}
-
-	public void Attack ()
-	{
-		manager.Attack ();
 	}
 
 	public void Run ()
