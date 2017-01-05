@@ -21,12 +21,12 @@ public class Item : MonoBehaviour
 
         if (damage > 0)
         {
-            ColorUtility.TryParseHtmlString("#FF2626FF", out colorText);
+            ColorUtility.TryParseHtmlString("#FFFFFFFF", out colorText);
             return damage.ToString();
         }
         if (defense > 0)
         {
-            ColorUtility.TryParseHtmlString("#00CC45FF", out colorText);
+            ColorUtility.TryParseHtmlString("#FFFFFFFF", out colorText);
             return defense.ToString();
         }
         ColorUtility.TryParseHtmlString("#FFFFFFFF", out colorText);

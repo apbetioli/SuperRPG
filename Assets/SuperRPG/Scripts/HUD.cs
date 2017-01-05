@@ -36,10 +36,10 @@ public class HUD : MonoBehaviour
 		health.text = player.health.ToString () + "/" + player.maxHealth.ToString ();
 
 		weapon.text = player.damage.ToString ();
-		weaponImage.sprite = player.weapon.sprite;
+	//	weaponImage.sprite = player.weapon.sprite;
 
 		shield.text = player.defense.ToString ();
-		shieldImage.sprite = player.shield.sprite;
+		//shieldImage.sprite = player.shield.sprite;
 
 		coins.text = player.coins.ToString ();
 
