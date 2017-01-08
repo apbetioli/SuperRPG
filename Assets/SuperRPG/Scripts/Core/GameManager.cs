@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public static void Run (Enemy enemy)
+	public static void GameOver (Enemy enemy)
 	{
 		/*
 		Player player = Player.Instance;

@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 	}
 
 	private bool modelInstantiated;
+	private Model model;
 
 	public void Start ()
 	{
@@ -42,6 +43,9 @@ public class Enemy : MonoBehaviour
 
 	public void TakeDamage (int damage)
 	{
+		if(model != null)
+			model.Hit();
+		
 		health = Mathf.Min (health, health - damage + defense);
 	}
 
@@ -59,7 +63,14 @@ public class Enemy : MonoBehaviour
 			//instance.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
 			instance.transform.position = new Vector3 (6, 13, -7);
 			modelInstantiated = true;
+
+			model = GetComponentInChildren<Model> ();
 		}
+	}
+
+	public void Die() {
+		if (model != null)
+			model.Die();
 	}
 
 }

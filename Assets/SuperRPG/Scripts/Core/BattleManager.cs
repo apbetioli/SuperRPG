@@ -45,7 +45,7 @@ public class BattleManager : MonoBehaviour
 
 			player.coins += currentEnemy.coins;
 
-			Destroy (currentEnemy.gameObject);
+			currentEnemy.Die ();
 
 			if (currentTurnIndex == turns.Length)
 				NextFloor ();
@@ -63,7 +63,7 @@ public class BattleManager : MonoBehaviour
 		player.TakeDamage (currentEnemy.damage);
 
 		if (player.IsDead ())
-			GameManager.Run (currentEnemy);
+			GameManager.GameOver (currentEnemy);
 	}
 
 	public void NextFloor ()
