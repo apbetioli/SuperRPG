@@ -55,8 +55,9 @@ public class Enemy : MonoBehaviour
 		if (modelPrefab != null && !modelInstantiated) {
 			GameObject instance = GameObject.Instantiate (modelPrefab);
 			instance.transform.SetParent (transform);
-			instance.transform.localRotation = Quaternion.Euler (new Vector3 (90, 0, 0));
-			instance.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+			instance.transform.localRotation = Quaternion.Euler (new Vector3 (30, 45, 0));
+			//instance.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
+			instance.transform.position = new Vector3 (6, 13, -7);
 			modelInstantiated = true;
 		}
 	}
