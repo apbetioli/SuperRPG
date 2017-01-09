@@ -23,12 +23,14 @@ public class Shop : MonoBehaviour
 	{
 		Floor floor = gameManager.CurrentFloor;
 		Item[] items = floor.items;
+	
 		for (int i = 0; i < items.Length; i++) {
 			Item item = items [i];
 			Button button = buttons [i];
 			button.GetComponentsInChildren<Text> () [0].text = item.Stats ();
 			button.GetComponentsInChildren<Text> () [0].color = item.colorText;
 			button.GetComponentsInChildren<Text> () [1].text = item.price.ToString ();
+			button.GetComponentsInChildren<Text> () [2].text = item.name.ToString();
 			button.GetComponentInChildren<Equip> ().item = item;
 			if (item.sprite)
 				button.GetComponentInChildren<Image> ().sprite = item.sprite;
