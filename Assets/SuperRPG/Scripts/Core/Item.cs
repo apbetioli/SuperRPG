@@ -14,8 +14,6 @@ public class Item : MonoBehaviour
 
     public Sprite sprite;
     public Color colorText;
-    public string name;
-
 
     public string Stats()
     {
