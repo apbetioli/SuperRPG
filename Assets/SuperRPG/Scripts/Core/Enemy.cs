@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 	}
 
 	private bool modelInstantiated;
-	private Model model;
+	private GameObject model;
 
 	public void Start ()
 	{
@@ -43,8 +43,8 @@ public class Enemy : MonoBehaviour
 
 	public void TakeDamage (int damage)
 	{
-		if(model != null)
-			model.Hit();
+		//if(model != null)
+		//	model.Hit();
 		
 		health = Mathf.Min (health, health - damage + defense);
 	}
@@ -59,18 +59,19 @@ public class Enemy : MonoBehaviour
 		if (modelPrefab != null && !modelInstantiated) {
 			GameObject instance = GameObject.Instantiate (modelPrefab);
 			instance.transform.SetParent (transform);
-			instance.transform.localRotation = Quaternion.Euler (new Vector3 (30, 45, 0));
-			//instance.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
-			instance.transform.position = new Vector3 (6, 13, -7);
+			instance.transform.localRotation = Quaternion.Euler (new Vector3 (90, 0, 0));
+			instance.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
+			instance.transform.position = Vector3.zero;
 			modelInstantiated = true;
 
-			model = GetComponentInChildren<Model> ();
+			model = instance;//GetComponentInChildren<Model> ();
 		}
 	}
 
 	public void Die() {
 		if (model != null)
-			model.Die();
+			DestroyImmediate (model);
+			//model.Die();
 	}
 
 }

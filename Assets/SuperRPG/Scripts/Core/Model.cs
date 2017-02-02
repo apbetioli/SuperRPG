@@ -17,10 +17,11 @@ public class Model : MonoBehaviour {
 
 	public void Die() {
 		animator.SetTrigger ("Death");
+		Destroy ();
 	}
 
 	public void Destroy() {
-		Destroy (gameObject);
+		DestroyImmediate (gameObject);
 	}
 
 }
