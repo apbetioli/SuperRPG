@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ef7948ed87f20b541acc7068bb631d7e
+timeCreated: 1487531437
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pixel Operator
+  fontNames:
+  - Pixel Operator
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 323896c0e381a2c4b8d2660eb7627e34, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

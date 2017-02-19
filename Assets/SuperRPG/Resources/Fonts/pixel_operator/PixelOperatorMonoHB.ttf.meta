@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5a326f5f83d4aa74592f1e27a98dc484
+timeCreated: 1487531437
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pixel Operator Mono HB
+  fontNames:
+  - Pixel Operator Mono HB
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
