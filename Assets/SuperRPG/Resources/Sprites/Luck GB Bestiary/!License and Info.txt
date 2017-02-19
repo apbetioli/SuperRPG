@@ -1,0 +1,23 @@
+-LICENSE-
+Royalty Free,
+No Credit Neccissary but greatly appreciated.
+You may not distribute the Monster Pack either whole, in part, or edited except for in the context of a creative work such as a game, comic, video etc. 
+
+
+-COMMISSIONS-
+If you need something specific in this style you can commission me to make them at 10$ per sprite (32x32 size)
+
+
+-CONTACT-
+Comments, Suggestions, questions etc can be sent to LuckyCassette21@gmail.com or @LuckyCassette on Twitter.
+If you use these monsters in something you do I'd love to see your work, so shoot me a link :)
+
+
+-TIPS/INSIGHT FOR USE-
+If these were in a real gameboy game, they would be rendered in the background plane, which gives us full usage of the 4 shades of color. The Gameboy Color had additional pallets by inputting a command at boot, but it actually goes a bit beyond changing the colors. The Gameboy color is able to render two sprite planes in different pallets. Some of these pallets just used the same colors, others didn't. At the bottom of each of these monster pages is an S1 and S2 pallet. For accuracy, you can use those pallets to render sprites (for example, battle effects in Pokemon), but you would only use 3 out of the four colors in that pallet (one color must be chosen as transparent but it can be any color in the sprite pallet)
+
+The File !Lucky Softer Grays is my own take on what I remember the grey looking like. The actual gameboy screen wasn't really "white" after all, although that's what most emulators and such like to display today (and realistically there's no reason they should try to emulate the off color screen) If you prefer the untouched grays, the original gray ramp is LEFT B.
+
+If you're confused about the names of some these pallets, so am I. Only source I could find that names them was wikipedia, so for now I have no choice but to agree for consistency.
+
+*all sprites are 32x32. Background color can be safely removed should you wish to ignore GB limitations.
