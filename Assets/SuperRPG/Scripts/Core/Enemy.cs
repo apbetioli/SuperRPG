@@ -12,8 +12,6 @@ public class Enemy : MonoBehaviour
 	public int healthMax;
 	public float probability = 1f;
 
-	public GameObject modelPrefab;
-
 	private int _health;
 	[HideInInspector]
 	public int maxHealth;
@@ -29,11 +27,15 @@ public class Enemy : MonoBehaviour
 		set { _health = Mathf.Max (value, 0); } 
 	}
 
-	private bool modelInstantiated;
-	private GameObject model;
+	private Animator animator;
+
+	public void Awake() {
+		animator = GetComponent<Animator> ();
+	}
 
 	public void Start ()
 	{
+		transform.position = new Vector3 (-50, 0, 0);
 		damage = Random.Range (damageMin, damageMax + 1);
 		defense = Random.Range (defenseMin, defenseMax + 1);
 		coins = Random.Range (coinsMin, coinsMax + 1);
@@ -43,9 +45,8 @@ public class Enemy : MonoBehaviour
 
 	public void TakeDamage (int damage)
 	{
-		//if(model != null)
-		//	model.Hit();
-		
+		if(animator != null)
+			animator.SetTrigger ("Hit");
 		health = Mathf.Min (health, health - damage + defense);
 	}
 
@@ -54,24 +55,8 @@ public class Enemy : MonoBehaviour
 		return health <= 0;
 	}
 
-	public void InstantiateModel ()
-	{
-		if (modelPrefab != null && !modelInstantiated) {
-			GameObject instance = GameObject.Instantiate (modelPrefab);
-			instance.transform.SetParent (transform);
-			instance.transform.localRotation = Quaternion.Euler (new Vector3 (90, 0, 0));
-			instance.transform.localScale = new Vector3 (0.8f, 0.8f, 0.8f);
-			instance.transform.position = Vector3.zero;
-			modelInstantiated = true;
-
-			model = instance;//GetComponentInChildren<Model> ();
-		}
-	}
-
 	public void Die() {
-		if (model != null)
-			DestroyImmediate (model);
-			//model.Die();
+		//animator.SetTrigger ("Death");
+		DestroyImmediate (this);
 	}
-
 }
