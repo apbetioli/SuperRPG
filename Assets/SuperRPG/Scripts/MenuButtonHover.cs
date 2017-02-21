@@ -3,7 +3,7 @@
  using UnityEngine.EventSystems;  
  using UnityEngine.UI;
  
- public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+ public class MenuButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
  
      public Text theText;
  
