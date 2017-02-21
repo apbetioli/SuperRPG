@@ -43,4 +43,11 @@ public class Shop : MonoBehaviour
 		GameManager.Battle ();
 	}
 
+	public void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			GameManager.Menu ();
+			return;
+		}
+	}
+
 }

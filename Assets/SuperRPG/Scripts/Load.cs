@@ -9,7 +9,7 @@ public class Load : MonoBehaviour
 
 	void Start ()
 	{     
-		GameManager.Shop ();
+		GameManager.Menu ();
 	}
 
 	public void Reboot ()

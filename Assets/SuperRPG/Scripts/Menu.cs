@@ -7,19 +7,31 @@ using System.Linq;
 
 public class Menu : MonoBehaviour
 {
- 
-    public void StartGame()
-    {
-        SceneManager.LoadScene ("Load");
-    }
-    public void Exit()
-    {
-		Debug.Log("Fechar jogo!");
-        Application.Quit();
-    }
+	public void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Exit ();
+			return;
+		}
+	}
 
-	 public void Credits()
-    {
-		Debug.Log("Creditos!");
-    }
+	public void StartGame ()
+	{
+		GameManager.Shop ();
+	}
+
+	public void Exit ()
+	{
+		Debug.Log ("Fechar jogo!");
+		Application.Quit ();
+	}
+
+	public void Credits ()
+	{
+		Debug.Log ("Creditos!");
+	}
+
+	public void Leaderboard ()
+	{
+		GameManager.Instance.OpenLeaderboard ();
+	}
 }

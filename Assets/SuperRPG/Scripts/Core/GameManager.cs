@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 	private int floor = 0;
 
 	private Floors floors;
+	private Leaderboard leaderboard;
 
 	public static GameManager Instance {
 		get {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
 
 	public void Awake ()
 	{
+		leaderboard = FindObjectOfType<Leaderboard> ();
+
 		floors = FindObjectOfType<Floors> ();
 	}
 
@@ -101,5 +104,18 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene ("Battle");
 		SceneManager.LoadScene ("BattleHUD", LoadSceneMode.Additive);
 		HUD ();
+	}
+
+	public static void Menu ()
+	{
+		SceneManager.LoadScene ("Menu");
+	}
+
+	public void OpenLeaderboard ()
+	{
+		if (leaderboard != null)
+			leaderboard.Open ();
+		else
+			Debug.LogWarning ("Leaderboard not found");
 	}
 }

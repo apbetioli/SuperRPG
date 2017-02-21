@@ -32,6 +32,13 @@ public class Battle : MonoBehaviour
 		turnText.text = manager.GetTurnDescription ();
 	}
 
+	public void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			GameManager.Run ();
+			return;
+		}
+	}
+
 	public void Run ()
 	{
 		GameManager.Run ();

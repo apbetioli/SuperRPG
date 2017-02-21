@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-
 	void Update() {
-		if (Input.GetMouseButtonDown (0))
-			Reboot ();
+		if (Input.GetMouseButtonDown (0) || Input.GetKeyDown(KeyCode.Escape))
+			Reboot ();		
 	}
 
 	public void Reboot ()
