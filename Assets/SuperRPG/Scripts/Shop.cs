@@ -46,7 +46,7 @@ public class Shop : MonoBehaviour
 
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			GameManager.Menu ();
+			FindObjectOfType<Load> ().Reboot ();
 			return;
 		}
 	}

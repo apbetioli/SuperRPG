@@ -10,7 +10,7 @@ public class Leaderboard : MonoBehaviour {
 	private bool authenticated;
 
 	public void Start() {
-		
+		//PlayGamesPlatform.Activate();
 		Authenticate ();
     }
 
