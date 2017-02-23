@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class BattleManager : MonoBehaviour
 {
 	public float waitTime = 0f;
-	public Animator animator;
 
 	[HideInInspector]
 	public Enemy currentEnemy;
@@ -40,9 +39,6 @@ public class BattleManager : MonoBehaviour
 		if (player.IsDead ())
 			return;
 
-		if (animator != null)
-			animator.SetTrigger ("Hit");
-		
 		currentEnemy.TakeDamage (player.damage);
 
 		if (currentEnemy.IsDead ()) {
@@ -99,9 +95,6 @@ public class BattleManager : MonoBehaviour
 	}
 
 	public void InstantiateEnemy() {
-		//GameObject enemy = GameObject.Instantiate (currentEnemy.gameObject);
-		//transform.SetParent (transform);
-		//model.transform.localRotation = Quaternion.Euler (new Vector3 (90, 0, 0));
 		currentEnemy.transform.position = Vector3.zero;
 
 		if (currentTurnIndex % 2 == 0)

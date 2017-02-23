@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityEngine.SocialPlatforms;
+
 public class Menu : MonoBehaviour
 {
+	public Text status;
+
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			Exit ();
@@ -32,6 +36,15 @@ public class Menu : MonoBehaviour
 
 	public void Leaderboard ()
 	{
-		GameManager.Instance.OpenLeaderboard ();
+		Social.localUser.Authenticate(success => {
+			if (success) {
+				status.text = "Username: " + Social.localUser.userName + "\nUser ID: " + Social.localUser.id + "\nIsUnderage: " + Social.localUser.underage;
+				GameManager.Instance.ShowLeaderboard ();
+			}
+			else {
+				status.text = "fail";
+			}
+		});
+
 	}
 }

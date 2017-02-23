@@ -111,10 +111,10 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public void OpenLeaderboard ()
+	public void ShowLeaderboard ()
 	{
 		if (leaderboard != null)
-			leaderboard.Open ();
+			leaderboard.ShowLeaderboard ();
 		else
 			Debug.LogWarning ("Leaderboard not found");
 	}
