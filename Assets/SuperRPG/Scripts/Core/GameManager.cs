@@ -46,13 +46,11 @@ public class GameManager : MonoBehaviour
 
 	public static void GameOver (Enemy enemy)
 	{
-		/*
+		
 		Player player = Player.Instance;
 
-		Analytics.CustomEvent ("DeathInFloor", new Dictionary<string, object> {
-			{ "floor", Instance.floor }
-		});
-
+		Analytics.CustomEvent ("death.floor."+Instance.floor);
+		/*
 		Analytics.CustomEvent ("GameOver", new Dictionary<string, object> {
 			{ "floor", Instance.floor },
 			{ "coins", player.coins },
@@ -63,6 +61,7 @@ public class GameManager : MonoBehaviour
 			{ "enemy", enemy.name }
 		});
 		*/
+		Analytics.FlushEvents ();
 
 		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Fail, "floor " + Instance.floor, enemy.name);
 
@@ -111,11 +110,8 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public void ShowLeaderboard ()
+	public bool ShowLeaderboard ()
 	{
-		if (leaderboard != null)
-			leaderboard.ShowLeaderboard ();
-		else
-			Debug.LogWarning ("Leaderboard not found");
+		return leaderboard.ShowLeaderboard ();
 	}
 }

@@ -38,13 +38,12 @@ public class Menu : MonoBehaviour
 	{
 		Social.localUser.Authenticate(success => {
 			if (success) {
+				Debug.Log ("Authentication successful");
 				status.text = "Username: " + Social.localUser.userName + "\nUser ID: " + Social.localUser.id + "\nIsUnderage: " + Social.localUser.underage;
-				GameManager.Instance.ShowLeaderboard ();
 			}
 			else {
-				status.text = "fail";
+				Debug.LogWarning ("Authentication failed");
 			}
 		});
-
 	}
 }

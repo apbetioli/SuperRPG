@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using System.Collections;
+//using GooglePlayGames;
 
 /*
  * Controls the interaction with Google play leaderboard
@@ -9,9 +10,8 @@ public class Leaderboard : MonoBehaviour {
 
 	private bool authenticated;
 
-	public void Start() {
+	public void OnEnable() {
 		//PlayGamesPlatform.Activate();
-		Authenticate ();
     }
 
     public void Authenticate() {
@@ -38,12 +38,16 @@ public class Leaderboard : MonoBehaviour {
 		});
     }
 
-    public void ShowLeaderboard () {
-		if (!authenticated)
-			return;
+    public bool ShowLeaderboard () {
+		if (!authenticated) {
+			Debug.LogWarning ("Not authenticated.");
+			Authenticate ();
+			return false;
+		}
 		
 		Social.ShowLeaderboardUI();
 		//PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_super_rpg_masters);
+		return true;
     }
 
 	public void UnlockAchievement(string id) {
