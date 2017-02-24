@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GameAnalyticsSDK;
 
 public class Load : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Load : MonoBehaviour
 	public void Reboot ()
 	{
 		Destroy (gameObject);
+		GameAnalytics ga = FindObjectOfType<GameAnalytics> ();
+		if (ga != null)
+			Destroy (ga.gameObject);
 		GameManager.Load ();
 	}
 }
