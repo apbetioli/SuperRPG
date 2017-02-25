@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b90470569c38b204aaafada18d34f529
-timeCreated: 1487531437
+guid: 2a3a42e924319994aa81a273ea4a4311
+timeCreated: 1487979680
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,11 +9,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixel Operator 8
+  fontName: Gameplay
   fontNames:
-  - Pixel Operator 8
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 0c769a3e18c14b2468e4a546f15586b5, type: 3}
+  - Gameplay
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 2
   ascentCalculationMode: 1

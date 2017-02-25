@@ -4,7 +4,7 @@ timeCreated: 1487531436
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 20
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
@@ -12,9 +12,10 @@ TrueTypeFontImporter:
   fontName: Pixel Operator SC
   fontNames:
   - Pixel Operator SC
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b4a9b4312b9926b43b083a37b16a1e7f, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 

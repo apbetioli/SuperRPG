@@ -95,12 +95,12 @@ public class BattleManager : MonoBehaviour
 	}
 
 	public void InstantiateEnemy() {
-		currentEnemy.transform.position = Vector3.zero;
+		currentEnemy.transform.position = new Vector3(0, 3, 0);
 
 		if (currentTurnIndex % 2 == 0)
-			currentEnemy.transform.localScale = new Vector3 (-20, 20, 20);
+			currentEnemy.transform.localScale = new Vector3 (-10, 10, 10);
 		else
-			currentEnemy.transform.localScale = new Vector3 (20, 20, 20);
+			currentEnemy.transform.localScale = new Vector3 (10, 10, 10);
 	}
 
 	public string GetTurnDescription ()

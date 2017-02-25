@@ -4,7 +4,7 @@ timeCreated: 1487531436
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 20
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
@@ -12,9 +12,10 @@ TrueTypeFontImporter:
   fontName: Pixel Operator 8
   fontNames:
   - Pixel Operator 8
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b90470569c38b204aaafada18d34f529, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 
