@@ -31,7 +31,7 @@ public class Shop : MonoBehaviour
 			//button.GetComponentsInChildren<Text> () [0].text = item.Stats ();
 			//button.GetComponentsInChildren<Text> () [0].color = item.colorText;
 			button.GetComponentsInChildren<Text> () [0].text = item.price.ToString ();
-			button.GetComponentsInChildren<Text> () [1].text = item.name.ToString() + " (" + item.Stats () + ")";
+			button.GetComponentsInChildren<Text> () [1].text = item.name.ToString() + " ( " + item.Stats () + ")";
 			button.GetComponentInChildren<Equip> ().item = item;
 			if (item.sprite)
 				button.GetComponentInChildren<Image> ().sprite = item.sprite;
