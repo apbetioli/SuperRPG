@@ -5,7 +5,6 @@ public class Shop : MonoBehaviour
 {
 	public GameObject prefab;
 	public Button[] buttons;
-	public AudioSource buySound;
 
 	private GameManager gameManager;
 
@@ -29,8 +28,6 @@ public class Shop : MonoBehaviour
 			Item item = items [i];
 			Button button = buttons [i];
 			Debug.Log(button);
-			//button.GetComponentsInChildren<Text> () [0].text = item.Stats ();
-			//button.GetComponentsInChildren<Text> () [0].color = item.colorText;
 			button.GetComponentsInChildren<Text> () [0].text = item.price.ToString ();
 			button.GetComponentsInChildren<Text> () [1].text = item.name.ToString() + " ( " + item.Stats () + ")";
 			button.GetComponentInChildren<Equip> ().item = item;

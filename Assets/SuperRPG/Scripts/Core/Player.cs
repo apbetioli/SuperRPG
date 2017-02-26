@@ -54,21 +54,18 @@ public class Player : MonoBehaviour
         if (item.price > coins)
         {
             Debug.Log("Not enough money");
-            //FloatingTextController.CreateFloatingText2("Not enough money", item.transform);
             return false;
         }
 
 		if (weapon.name.Equals(item.name))
         {
             Debug.Log("Already have weapon");
-            //FloatingTextController.CreateFloatingText2("Already have weapon", item.transform);
 			return false;
         }
 
 		if (shield.name.Equals(item.name))
         {
             Debug.Log("Already have shield");
-           // FloatingTextController.CreateFloatingText2("Already have shield", item.transform);
 			return false;
         }
 
@@ -77,15 +74,12 @@ public class Player : MonoBehaviour
         if (item.hp > 0 && health == maxHealth)
         {
             Debug.Log("Too much health");
-           // FloatingTextController.CreateFloatingText2("Too much health", item.transform);
 			return false;
         }
 
         health += item.hp;
 
         coins -= item.price;
-
-      //  FloatingTextController.CreateFloatingText(item.price.ToString(), item.transform);
 
         if (item.GetType() == typeof(Weapon))
             weapon = item as Weapon;
