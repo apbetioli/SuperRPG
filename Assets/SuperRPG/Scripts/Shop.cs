@@ -5,6 +5,7 @@ public class Shop : MonoBehaviour
 {
 	public GameObject prefab;
 	public Button[] buttons;
+	public AudioSource buySound;
 
 	private GameManager gameManager;
 

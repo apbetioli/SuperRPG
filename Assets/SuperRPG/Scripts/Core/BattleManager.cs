@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class BattleManager : MonoBehaviour
 {
 	public float waitTime = 0f;
+	public AudioSource hitSound;
 
 	[HideInInspector]
 	public Enemy currentEnemy;
@@ -40,6 +41,9 @@ public class BattleManager : MonoBehaviour
 			return;
 
 		currentEnemy.TakeDamage (player.damage);
+
+		if (hitSound != null)
+			hitSound.Play ();
 
 		if (currentEnemy.IsDead ()) {
 

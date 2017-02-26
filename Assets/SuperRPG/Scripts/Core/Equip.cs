@@ -5,6 +5,8 @@ using UnityEngine;
 public class Equip : MonoBehaviour
 {
 	public Item item;
+	public AudioSource buySound;
+	public AudioSource cantBuySound;
 
 	private Player player;
 
@@ -19,6 +21,12 @@ public class Equip : MonoBehaviour
 			Debug.LogError ("No item set to equip");
 			return;
 		}
-		player.DoEquip (item);
+		if (player.DoEquip (item)) {
+			if (buySound != null)
+				buySound.Play ();
+		} else {
+			if (cantBuySound != null)
+				cantBuySound.Play ();
+		}
 	}
 }
