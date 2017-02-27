@@ -27,7 +27,6 @@ public class Shop : MonoBehaviour
 		for (int i = 0; i < items.Length; i++) {
 			Item item = items [i];
 			Button button = buttons [i];
-			Debug.Log(button);
 			button.GetComponentsInChildren<Text> () [0].text = item.price.ToString ();
 			button.GetComponentsInChildren<Text> () [1].text = item.name.ToString() + " ( " + item.Stats () + ")";
 			button.GetComponentInChildren<Equip> ().item = item;
