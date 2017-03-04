@@ -36,14 +36,6 @@ public class Menu : MonoBehaviour
 
 	public void Leaderboard ()
 	{
-		Social.localUser.Authenticate(success => {
-			if (success) {
-				Debug.Log ("Authentication successful");
-				status.text = "Username: " + Social.localUser.userName + "\nUser ID: " + Social.localUser.id + "\nIsUnderage: " + Social.localUser.underage;
-			}
-			else {
-				Debug.LogWarning ("Authentication failed");
-			}
-		});
+		GameManager.Instance.ShowLeaderboard ();
 	}
 }

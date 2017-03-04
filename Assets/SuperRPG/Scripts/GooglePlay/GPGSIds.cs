@@ -24,11 +24,11 @@
 
 public static class GPGSIds
 {
-        public const string achievement_passed_the_level_3 = "CgkIyOzi5bYWEAIQBQ"; // <GPGSID>
         public const string achievement_the_brave = "CgkIyOzi5bYWEAIQAw"; // <GPGSID>
         public const string achievement_first_blood = "CgkIyOzi5bYWEAIQAQ"; // <GPGSID>
-        public const string leaderboard_super_rpg_masters = "CgkIyOzi5bYWEAIQAA"; // <GPGSID>
+        public const string achievement_played_50_times = "CgkIyOzi5bYWEAIQBQ"; // <GPGSID>
         public const string achievement_found_the_chest = "CgkIyOzi5bYWEAIQBA"; // <GPGSID>
+        public const string leaderboard_super_rpg_masters = "CgkIyOzi5bYWEAIQAA"; // <GPGSID>
         public const string achievement_first_death = "CgkIyOzi5bYWEAIQAg"; // <GPGSID>
 
 }
