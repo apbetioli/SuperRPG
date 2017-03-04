@@ -1,62 +1,92 @@
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using System.Collections;
-//using GooglePlayGames;
+using GooglePlayGames;
 
 /*
  * Controls the interaction with Google play leaderboard
  */
 public class Leaderboard : MonoBehaviour {
+	
+	void Start() {
+		Activate();
+		Authenticate ();
+	}
 
-	private bool authenticated;
+	public void Authenticate() {
+		#if UNITY_ANDROID
+		Social.localUser.Authenticate((auth,msg) => {
+			Debug.Log(msg);
 
-	public void OnEnable() {
-		//PlayGamesPlatform.Activate();
-    }
+			if (auth) {
+				Debug.Log ("Authentication successful");
+				Debug.Log ("Username: " + Social.localUser.userName + "\nUser ID: " + Social.localUser.id + "\nIsUnderage: " + Social.localUser.underage);
+			}
+			else {
+				Debug.LogWarning ("Authentication failed");
+			}
+		});	
+		#endif
+	}
+	
+	public void ReportScore(int score) {
+		#if UNITY_ANDROID
+		Social.localUser.Authenticate((auth,msg) => {
+			Debug.Log(msg);
 
-    public void Authenticate() {
-        Social.localUser.Authenticate(success => {
-			authenticated = success;
+			if (auth) {
+				Social.ReportScore(score, GPGSIds.leaderboard_super_rpg_masters, success => {
+					if(success)
+						Debug.Log("Report score ok");
+					else
+						Debug.LogWarning("Report score failed");
+				});
+			}
+			else {
+				Debug.LogWarning("Authentication failed");
+			}
+		});	
+		#endif
+	}
 
-            if (success) {
-                Debug.Log ("Authentication successful");
-                Debug.Log ("Username: " + Social.localUser.userName + "\nUser ID: " + Social.localUser.id + "\nIsUnderage: " + Social.localUser.underage);
-            }
-            else {
-                Debug.LogWarning ("Authentication failed");
-            }
-        });
-    }
-    
-    public void ReportScore(int score) {
-		if (!authenticated)
-			return;
+	public void Activate() {
+		#if UNITY_ANDROID
+		PlayGamesPlatform.Activate();
+		Debug.Log("Play Game Platform Activated");
+		#endif
+	}
 
-        Social.ReportScore(score, GPGSIds.leaderboard_super_rpg_masters, success => {
-			if(!success)
-				Debug.LogWarning("Error reporting score");
+	public void ShowLeaderboard () {
+		#if UNITY_ANDROID
+		Social.localUser.Authenticate ((auth,msg) => {
+			Debug.Log(msg);
+
+			if (auth) {
+				Debug.Log("Showing leaderboard");
+				//Social.ShowLeaderboardUI();
+				PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_super_rpg_masters);
+
+			} else {
+				Debug.LogWarning("Authentication failed");
+			}
 		});
-    }
-
-    public bool ShowLeaderboard () {
-		if (!authenticated) {
-			Debug.LogWarning ("Not authenticated.");
-			Authenticate ();
-			return false;
-		}
-		
-		Social.ShowLeaderboardUI();
-		//PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_super_rpg_masters);
-		return true;
-    }
+		#endif
+	}
 
 	public void UnlockAchievement(string id) {
-		if (!authenticated)
-			return;
-		
-		Social.ReportProgress (id, 100.0f, success => {
-			if(!success)
-				Debug.LogWarning("Error unlocking achievement");
+		#if UNITY_ANDROID
+		Social.localUser.Authenticate ((auth,msg) => {
+			Debug.Log(msg);
+
+			if (auth) {
+				Social.ReportProgress (id, 100.0f, success => {
+					if(!success)
+						Debug.LogWarning("Error unlocking achievement");
+				});
+			} else {
+				Debug.LogWarning("Authentication failed");
+			}
 		});
+		#endif
 	}
 }

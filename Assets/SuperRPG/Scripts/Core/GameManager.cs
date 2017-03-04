@@ -110,8 +110,8 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public bool ShowLeaderboard ()
+	public void ShowLeaderboard ()
 	{
-		return leaderboard.ShowLeaderboard ();
+		leaderboard.ShowLeaderboard ();
 	}
 }
